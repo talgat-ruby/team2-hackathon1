@@ -7,9 +7,9 @@
     --primary-color: hsla(213, 96%, 18%, 1);
     --secondary-color: hsla(231, 11%, 63%, 1);
     --accent-color: hsla(243, 100%, 62%, 1);
-    --progress-primary-color: hsla(0, 0%, 100%, 1);
-    --progress-secondary-color: hsla(228, 100%, 83%, 1);
-    --progress-accent-color: hsla(206, 94%, 87%, 1);
+    --sidebar-primary-color: hsla(0, 0%, 100%, 1);
+    --sidebar-secondary-color: hsla(228, 100%, 83%, 1);
+    --sidebar-accent-color: hsla(206, 94%, 87%, 1);
     --error-color: hsla(354, 84%, 57%, 1);
     --font-primary: 'Ubuntu', sans-serif;
     --breakpoint-sm: 576px;
