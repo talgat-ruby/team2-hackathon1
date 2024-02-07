@@ -1,3 +1,22 @@
+:root {
+    --bg-color: hsla(218, 100%, 97%, 1);
+    --form-bg-color: hsla(0, 0%, 100%, 1);
+    --footer-bg-color: hsla(0, 0%, 100%, 1);
+    --card-bg-color: hsla(231, 23%, 87%, 1);
+    --card-border-color: hsla(229, 24%, 87%, 1);
+    --primary-color: hsla(213, 96%, 18%, 1);
+    --secondary-color: hsla(231, 11%, 63%, 1);
+    --accent-color: hsla(243, 100%, 62%, 1);
+    --progress-primary-color: hsla(0, 0%, 100%, 1);
+    --progress-secondary-color: hsla(228, 100%, 83%, 1);
+    --progress-accent-color: hsla(206, 94%, 87%, 1);
+    --error-color: hsla(354, 84%, 57%, 1);
+    --font-primary: 'Ubuntu', sans-serif;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+}
+
 body {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: var(--font-primary);
 }
