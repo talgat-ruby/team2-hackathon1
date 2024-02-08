@@ -11,6 +11,39 @@
 
 <div class="viewing">
     <div class="container">
+        <div class="image">
+            <div class="steps">
+                <div class="step">
+                    <span class="step-circle {step === 1 ? 'step-circle-selected' : ''}">1</span>
+                    <span class="step-content">
+                        <span class="step-content-title">Step 1<br></span>
+                        <span class="step-content-content">Your Info</span>
+                    </span>
+                </div>
+                <div class="step">
+                    <span class="step-circle {step === 2 ? 'step-circle-selected' : ''}">2</span>
+                    <span class="step-content">
+                        <span class="step-content-title">Step 2<br></span>
+                        <span class="step-content-content">Select Plan</span>
+                    </span>
+                </div>
+                <div class="step">
+                    <span class="step-circle {step === 3 ? 'step-circle-selected' : ''}">3</span>
+                    <span class="step-content">
+                        <span class="step-content-title">Step 3<br></span>
+                        <span class="step-content-content">Add-Ons</span>
+                    </span>
+                </div>
+                <div class="step">
+                    <span class="step-circle {step === 4 || step === 5 ? 'step-circle-selected' : ''}">4</span>
+                    <span class="step-content">
+                        <span class="step-content-title">Step 4<br></span>
+                        <span class="step-content-content">Summary</span>
+                    </span>
+                </div>
+            </div>
+       
+    </div>
         <Sidebar {step}/>
         <!--        <div class="image">-->
         <!--            <div class="steps">-->
@@ -58,9 +91,9 @@
                 <Confirm/>
             {/if}
         </section>
-    </div>
-</div>
+ </div>
 
+</div>
 
 <style>
     .viewing {
@@ -74,8 +107,7 @@
         border-radius: 1rem;
         background-color: hsl(0, 0%, 100%);
         display: flex;
-        max-width: 900px;
-        min-width: 900px;
+        
         margin-left: auto;
         margin-right: auto;
         box-shadow: 0 15px 10px -15px hsl(229, 24%, 87%);
@@ -89,9 +121,10 @@
 
     .fields {
         margin-top: 3rem;
-        margin-left: 6rem;
-        padding-right: 3rem;
-        width: 30rem;
+        margin-left: 1rem;
+        padding-right: 6.25rem;
+        padding-left: 6.25rem;
+        display: flex;
     }
 
     .steps {
@@ -112,22 +145,19 @@
         width: 1rem;
         height: 1rem;
         border-radius: 50%;
-        border: 1px solid white;
-        color: white;
+        border: 1px solid var(--sidebar-primary-color);
+        color:var(--sidebar-primary-color);;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    .step-content {
-
-    }
-
+   
     .step-content-title {
         font-weight: 400;
         font-size: 0.9rem;
         text-transform: uppercase;
-        color: white;
+        color: var(--sidebar-primary-color);
         opacity: 50%;
         letter-spacing: 0.001rem;
     }
@@ -135,7 +165,7 @@
     .step-content-content {
         font-weight: 700;
         text-transform: uppercase;
-        color: white;
+        color: var(--sidebar-primary-color);
     }
 
     .step-circle-selected {
@@ -161,14 +191,12 @@
         }
 
         .fields {
-            margin-top: 6.7rem;
-            margin-left: unset;
-            width: unset;
+            margin: 6.7rem 1rem 0 1rem;
+            display: flex;
+            align-items: flex-start;
             padding: 1.5rem;
             border-radius: 0.5rem;
             background-color: hsl(0, 0%, 100%);
-            max-width: 18rem;
-            min-width: 18rem;
             box-shadow: 0 15px 10px -15px hsl(229, 24%, 87%);
         }
 
