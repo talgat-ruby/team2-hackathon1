@@ -1,11 +1,11 @@
 <script lang="ts">
-    import SidebarMenu from "$lib/components/SidebarMenu.svelte";
+    import SidebarMenu from "$lib/components/sidebar/SidebarMenu.svelte";
 
     export let step: number;
 </script>
 
 <aside>
-    <SidebarMenu step={1}/>
+    <SidebarMenu {step}/>
 </aside>
 
 <style>

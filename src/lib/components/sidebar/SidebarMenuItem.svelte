@@ -1,6 +1,6 @@
 <script lang="ts">
-    import SidebarMenuItemCircle from "$lib/components/SidebarMenuItemCircle.svelte";
-    import SidebarMenuItemText from "$lib/components/SidebarMenuItemText.svelte";
+    import SidebarMenuItemCircle from "$lib/components/sidebar/SidebarMenuItemCircle.svelte";
+    import SidebarMenuItemText from "$lib/components/sidebar/SidebarMenuItemText.svelte";
 
     export let step: { num: number, title: string };
     $: num = step.num;
@@ -9,7 +9,7 @@
 </script>
 
 <li>
-    <a href="/">
+    <a href="/static">
         <SidebarMenuItemCircle {active} {num}/>
         <SidebarMenuItemText {num} {title}/>
     </a>

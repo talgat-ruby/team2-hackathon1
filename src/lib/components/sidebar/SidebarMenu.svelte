@@ -1,5 +1,5 @@
 <script lang="ts">
-    import SidebarMenuItem from "$lib/components/SidebarMenuItem.svelte";
+    import SidebarMenuItem from "$lib/components/sidebar/SidebarMenuItem.svelte";
 
     export let step: number;
     const steps = [
