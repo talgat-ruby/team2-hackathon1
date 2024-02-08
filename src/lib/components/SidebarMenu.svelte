@@ -26,7 +26,7 @@
         @media (min-width: 768px) {
             grid-auto-flow: row;
             gap: 2rem;
-            place-content: start;
+            place-content: stretch;
         }
     }
 </style>

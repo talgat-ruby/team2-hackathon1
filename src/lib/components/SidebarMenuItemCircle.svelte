@@ -24,11 +24,4 @@
         border-color: var(--sidebar-accent-color);
         color: var(--primary-color);
     }
-
-    /*a:hover {*/
-    /*    background-color: var(--sidebar-secondary-color);*/
-    /*    border-color: var(--sidebar-secondary-color);*/
-    /*    color: var(--sidebar-primary-color);*/
-    /*}*/
-
 </style>

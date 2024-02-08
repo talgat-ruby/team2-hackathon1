@@ -1,18 +1,17 @@
 <script lang="ts">
     import SidebarMenuItemCircle from "$lib/components/SidebarMenuItemCircle.svelte";
+    import SidebarMenuItemText from "$lib/components/SidebarMenuItemText.svelte";
 
     export let step: { num: number, title: string };
     $: num = step.num;
+    $: title = step.title;
     export let active: boolean;
 </script>
 
 <li>
     <a href="/">
         <SidebarMenuItemCircle {active} {num}/>
-        <hgroup>
-            <p>Step {step.num}</p>
-            <h3>{step.title}</h3>
-        </hgroup>
+        <SidebarMenuItemText {num} {title}/>
     </a>
 </li>
 
@@ -20,38 +19,18 @@
     a {
         text-decoration: none;
         color: var(--sidebar-primary-color);
-    }
+        border-radius: 50px;
 
-    hgroup {
-        display: none;
-    }
-
-    @media (min-width: 768px) {
-        a {
+        @media (min-width: 768px) {
             display: grid;
             grid-template-columns: auto 1fr;
             gap: 1rem;
         }
+    }
 
-        hgroup {
-            display: grid;
-            gap: 0.25rem;
-            text-transform: uppercase;
-        }
-
-        p {
-            font-size: 0.75rem;
-            font-weight: 400;
-            line-height: normal;
-            color: var(--sidebar-secondary-color);
-        }
-
-        h3 {
-            font-size: 0.875rem;
-            font-weight: 700;
-            line-height: normal;
-            letter-spacing: 0.0625rem;
-            color: var(--sidebar-primary-color);
-        }
+    a:focus, a:hover {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        color: var(--sidebar-primary-color);
     }
 </style>
