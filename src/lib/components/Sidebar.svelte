@@ -47,10 +47,10 @@
         justify-content: center;
         align-items: center;
         gap: 1rem;
-        padding-top: 2rem;
     }
 
     aside {
+        padding-top: 2rem;
         min-height: 10.75rem;
         background-image: url("$lib/images/bg-sidebar-mobile.svg");
         background-position: center;
