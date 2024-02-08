@@ -9,7 +9,7 @@
 </script>
 
 <li>
-    <a href="/static">
+    <a href="/">
         <SidebarMenuItemCircle {active} {num}/>
         <SidebarMenuItemText {num} {title}/>
     </a>
