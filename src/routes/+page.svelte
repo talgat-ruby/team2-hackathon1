@@ -11,7 +11,6 @@
 
 <div class="viewing">
     <div class="container">
-<<<<<<< HEAD
         <div class="image">
             <div class="steps">
                 <div class="step">
@@ -45,7 +44,6 @@
             </div>
        
     </div>
-=======
         <Sidebar {step}/>
         <!--        <div class="image">-->
         <!--            <div class="steps">-->
@@ -80,7 +78,6 @@
         <!--            </div>-->
         <!--        </div>-->
 
->>>>>>> 9b9f8e7674b8cc26f6810922c6e7e91469387a4c
         <section class="fields">
             {#if step === 1}
                 <Info on:setpage={(data) => step = data.detail.page}/>
@@ -94,14 +91,9 @@
                 <Confirm/>
             {/if}
         </section>
-<<<<<<< HEAD
  </div>
-</div>
-=======
-    </div>
-</div>
 
->>>>>>> 9b9f8e7674b8cc26f6810922c6e7e91469387a4c
+</div>
 
 <style>
     .viewing {
@@ -121,11 +113,11 @@
         box-shadow: 0 15px 10px -15px hsl(229, 24%, 87%);
     }
 
-    /* .image {
+    .image {
         width: 274px;
         height: 568px;
         background-image: url("/images/bg-sidebar-desktop.svg");
-    } */
+    }
 
     .fields {
         margin-top: 3rem;
@@ -181,37 +173,16 @@
         border: 0.12rem solid hsl(206, 94%, 87%);
         color: black;
     }
-<<<<<<< HEAD
-    .step {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-  }
-  .step-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-  }
-  .step-content span {
-    text-transform: uppercase;
-    color: var(--card-border-color);
-    font-size: 13px;
-  }
- 
-    @media(max-width: 765px) {
-        /* .image {
-=======
 
     @media (max-width: 765px) {
         .image {
->>>>>>> 9b9f8e7674b8cc26f6810922c6e7e91469387a4c
             background-size: cover;
             width: 100%;
             height: 172px;
             background-image: url("/images/bg-sidebar-mobile.svg");
             position: absolute;
             z-index: -1;
-        } */
+        }
 
         .steps {
             display: flex;
