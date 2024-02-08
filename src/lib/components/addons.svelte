@@ -46,11 +46,12 @@
       <button class="next-stp" type="button" on:click={goToNextStep}>Next Step</button>
     </div>
   </div>
-  <!-- Step 3 end -->
-  <style>
-    .step-3 {
 
-  width: 80%;
+  
+  <style>
+
+.step-3 {
+  width: 100%;
 }
 .step-3 form {
   display: flex;
@@ -60,7 +61,7 @@
   gap: 1.5rem;
 }
 .box {
-  border: 1px solid var(--secondory-color);
+  border: 1px solid var(--card-border-color);
   border-radius: 10px;
   padding: 1rem;
   display: flex;
@@ -92,6 +93,6 @@
   font-weight: 700;
 }
 .price {
-  color: var(--Purplish-blue);
+  color: var(--accent-color);
 }
   </style>

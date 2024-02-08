@@ -39,10 +39,9 @@
       <button class="next-stp" type="button" on:click={goToNextStep}>Next Step</button>
     </div>
   </div>
-  <!-- Step 4 end -->
   <style>
   .step-4 {
-  width: 80%;
+  width: 100%;
 }
 .selection-box {
   display: flex;
@@ -51,12 +50,12 @@
   flex: 1;
 }
 .selection-container {
-  background-color: var(--Magnolia);
+  background-color: var(--selected-card-color);
   padding: 1.5rem;
 }
 .selected {
-  border: 2px solid var(--Purplish-blue);
-  background-color: var(--Magnolia);
+  border: 2px solid var(--accent-color);
+  background-color: var(--selected-card-color);
 }
 .selected-plan {
   display: flex;

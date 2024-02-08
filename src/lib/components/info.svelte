@@ -1,15 +1,13 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
-  
 	const dispatch = createEventDispatcher();
-  
 	function goToNextStep() {
 	  dispatch('setpage', { page: 2 });
 	}
 	
   </script>
 
-<div class="stp step-1">
+<section  class="stp step-1">
 	<div class="header">
 	  <h1 class="title">Personal info</h1>
 	  <p class="exp">
@@ -49,15 +47,14 @@
 	  />
 	</form>
 	<div class="btns">
-
 			<button class="next-stp" type="button" on:click={goToNextStep}>Next Step</button>
 	
 	</div>
-  </div>
+</section>
   <style>
   .step-1 {
 	display: flex;
-	width: 90%;
+	width: 100%;
   }
   .step-1 form {
 	display: flex;
@@ -89,8 +86,10 @@
   }
   form .error {
 	display: none;
-	color: var(--Strawberry-red);
+	color: var(--error-color);
 	font-size: 0.9rem;
 	font-weight: 700;
   }
+
+
 </style>
