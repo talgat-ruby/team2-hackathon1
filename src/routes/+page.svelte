@@ -40,8 +40,8 @@
                     </span>
                 </div>
             </div>
-        </div>
-
+       
+    </div>
         <section class="fields">
             {#if step === 1}
                 <Info on:setpage={(data) => step = data.detail.page} />
@@ -55,9 +55,8 @@
                 <Confirm />
             {/if}
         </section>
-    </div>
  </div>
-
+</div>
 
 <style>
     .viewing {
@@ -71,24 +70,24 @@
         border-radius: 1rem;
         background-color: hsl(0, 0%, 100%);
         display: flex;
-        max-width: 900px;
-        min-width: 900px;
+        
         margin-left: auto;
         margin-right: auto;
         box-shadow: 0 15px 10px -15px hsl(229, 24%, 87%);
     }
 
-    .image {
+    /* .image {
         width: 274px;
         height: 568px;
         background-image: url("/images/bg-sidebar-desktop.svg");
-    }
+    } */
 
     .fields {
         margin-top: 3rem;
-        margin-left: 6rem;
-        padding-right: 3rem;
-        width: 30rem;
+        margin-left: 1rem;
+        padding-right: 6.25rem;
+        padding-left: 6.25rem;
+        display: flex;
     }
 
     .steps {
@@ -109,22 +108,19 @@
         width: 1rem;
         height: 1rem;
         border-radius: 50%;
-        border: 1px solid white;
-        color: white;
+        border: 1px solid var(--sidebar-primary-color);
+        color:var(--sidebar-primary-color);;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    .step-content {
-
-    }
-
+   
     .step-content-title {
         font-weight: 400;
         font-size: 0.9rem;
         text-transform: uppercase;
-        color: white;
+        color: var(--sidebar-primary-color);
         opacity: 50%;
         letter-spacing: 0.001rem;
     }
@@ -132,7 +128,7 @@
     .step-content-content {
         font-weight: 700;
         text-transform: uppercase;
-        color: white;
+        color: var(--sidebar-primary-color);
     }
 
     .step-circle-selected {
@@ -140,16 +136,31 @@
         border: 0.12rem solid hsl(206, 94%, 87%);
         color: black;
     }
-
+    .step {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .step-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .step-content span {
+    text-transform: uppercase;
+    color: var(--card-border-color);
+    font-size: 13px;
+  }
+ 
     @media(max-width: 765px) {
-        .image {
+        /* .image {
             background-size: cover;
             width: 100%;
             height: 172px;
             background-image: url("/images/bg-sidebar-mobile.svg");
             position: absolute;
             z-index: -1;
-        }
+        } */
 
         .steps {
             display: flex;
@@ -158,14 +169,12 @@
         }
 
         .fields {
-            margin-top: 6.7rem;
-            margin-left: unset;
-            width: unset;
+            margin: 6.7rem 1rem 0 1rem;
+            display: flex;
+            align-items: flex-start;
             padding: 1.5rem;
             border-radius: 0.5rem;
             background-color: hsl(0, 0%, 100%);
-            max-width: 18rem;
-            min-width: 18rem;
             box-shadow: 0 15px 10px -15px hsl(229, 24%, 87%);
         }
 

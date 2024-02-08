@@ -7,6 +7,7 @@
     --primary-color: hsla(213, 96%, 18%, 1);
     --secondary-color: hsla(231, 11%, 63%, 1);
     --accent-color: hsla(243, 100%, 62%, 1);
+    --selected-card-color:hsla(230,100%,99%,1);
     --sidebar-primary-color: hsla(0, 0%, 100%, 1);
     --sidebar-secondary-color: hsla(228, 100%, 83%, 1);
     --sidebar-accent-color: hsla(206, 94%, 87%, 1);
@@ -25,25 +26,10 @@ body {
     justify-content: center;
     min-height: 100vh;
   }
-  .form {
-    width: 900px;
+  .form { 
     background-color: var(--progress-primary-color);
     border-radius: 1rem;
     box-shadow: 0px 0px 1px black;
-  }
-  .form-container {
-    display: flex;
-    padding: 1rem;
-  }
-  .form-sidebar {
-    background-image: url("./assets/images/bg-sidebar-desktop.svg");
-    background-repeat: no-repeat;
-    width: 400px;
-    height: 568px;
-    padding: 3rem 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
   }
   .circle {
     width: 40px;
@@ -57,47 +43,13 @@ body {
     font-weight: 700;
   }
   .active .circle {
-    background-color: var(--Light-blue) !important;
+    background-color: var(--sidebar-accent-color) !important;
     color: var(--primary-color) !important;
   }
   .err {
     border: 2px solid var(--error-color) !important;
   }
-  .step {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-  }
-  .step-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-  }
-  .step-content span {
-    text-transform: uppercase;
-    color: var(--card-border-color);
-    font-size: 13px;
-  }
-  .step-content b {
-    text-transform: uppercase;
-    color: var(--White);
-  }
-  .stp {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .stp .header {
-    margin-bottom: auto;
-    padding-top: 2rem;
-    line-height: 2.5rem;
-  }
-  .header .title {
-    color: var(--primary-color);
-  }
-  .header .exp {
-    color: var(--secondary-color);
-  }
+ 
   .next-stp {
     margin-top: auto;
     margin-bottom: 2rem;
@@ -106,32 +58,8 @@ body {
     padding: 1rem 2rem;
     border-radius: 7px;
     background-color: var(--primary-color);
-    color: white;
+    color: var(--sidebar-primary-color);
     cursor: pointer;
-  }
-  .switcher {
-    margin: 2rem 0;
-  }
-  .switcher {
-    background-color: var(--Magnolia);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    margin-bottom: 5rem;
-    justify-content: center;
-  }
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 24px;
-  }
-
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
   }
   
  
@@ -154,7 +82,7 @@ body {
     width: 16px;
     left: 4px;
     bottom: 4px;
-    background-color: white;
+    background-color: var(--sidebar-primary-color);
     -webkit-transition: 0.4s;
     transition: 0.4s;
   }
@@ -173,49 +101,44 @@ body {
   .slider.round:before {
     border-radius: 50%;
   }
-  
+  .stp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .stp .header {
+    margin-bottom: auto;
+    padding-top: 2rem;
+    line-height: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    line-height: 1.5rem;
+    
+  }
+  .header .title {
+    font-family: Ubuntu;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.75rem;
+    letter-spacing: 0rem;
+    color: var(--primary-color);
+  }
+  .header .exp {
+    color: var(--secondary-color);
+  }
   @media screen and (max-width: 765px) {
     body {
       position: relative;
     }
-    .form-sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background-image: url("./assets/images/bg-sidebar-mobile.svg");
-      flex-direction: row;
-      height: 300px;
-      background-size: cover;
-      width: 100%;
-      align-items: flex-start;
-      justify-content: center;
-      z-index: -1;
-    }
+   
     .step-content {
       display: none;
     }
     .form {
       position: absolute;
       top: 15%;
-      max-width: 375px;
-      background-color: white;
-    }
-    .form-container {
-      padding: 2rem;
-    }
-   
-    .step-2 form {
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    .plan-card {
-      width: 100%;
-      height: 100px;
-      flex-direction: row;
-      justify-content: flex-start;
-      gap: 1rem;
-      align-items: center;
+      background-color: var(--sidebar-primary-color);
     }
     .stp {
       gap: 1rem;
@@ -223,10 +146,8 @@ body {
     }
     .stp .header {
       padding-top: 0;
-      display: flex;
       flex-direction: column;
-      gap: 1rem;
-      line-height: 1.5rem;
+    
     }
    
   }
