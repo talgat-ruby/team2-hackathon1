@@ -37,7 +37,6 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource/ubuntu": "^5.0.8",
-		"more-modern-css-reset": "^1.0.0",
-		"reset-css": "^5.0.2"
+		"more-modern-css-reset": "^1.0.0"
 	}
 }
