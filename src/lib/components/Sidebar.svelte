@@ -23,7 +23,7 @@
 
     .circle {
         width: 2.0625rem;
-        aspect-ratio: 1;
+        height: 2.0625rem;
         display: grid;
         place-content: center;
         border: 1px solid var(--sidebar-primary-color);
