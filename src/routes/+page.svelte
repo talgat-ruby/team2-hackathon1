@@ -4,11 +4,14 @@
     import Addons from '$lib/components/addons.svelte'
     import Summary from '$lib/components/summary.svelte'
     import Confirm from '$lib/components/confirm.svelte'
+    import Sidebar from "$lib/components/sidebar/Sidebar.svelte";
+
     let step = 1;
 </script>
 
 <div class="viewing">
     <div class="container">
+<<<<<<< HEAD
         <div class="image">
             <div class="steps">
                 <div class="step">
@@ -42,21 +45,63 @@
             </div>
        
     </div>
+=======
+        <Sidebar {step}/>
+        <!--        <div class="image">-->
+        <!--            <div class="steps">-->
+        <!--                <div class="step">-->
+        <!--                    <span class="step-circle {step === 1 ? 'step-circle-selected' : ''}">1</span>-->
+        <!--                    <span class="step-content">-->
+        <!--                                <span class="step-content-title">Step 1<br></span>-->
+        <!--                                <span class="step-content-content">Your Info</span>-->
+        <!--                            </span>-->
+        <!--                </div>-->
+        <!--                <div class="step">-->
+        <!--                    <span class="step-circle {step === 2 ? 'step-circle-selected' : ''}">2</span>-->
+        <!--                    <span class="step-content">-->
+        <!--                                <span class="step-content-title">Step 2<br></span>-->
+        <!--                                <span class="step-content-content">Select Plan</span>-->
+        <!--                            </span>-->
+        <!--                </div>-->
+        <!--                <div class="step">-->
+        <!--                    <span class="step-circle {step === 3 ? 'step-circle-selected' : ''}">3</span>-->
+        <!--                    <span class="step-content">-->
+        <!--                                <span class="step-content-title">Step 3<br></span>-->
+        <!--                                <span class="step-content-content">Add-Ons</span>-->
+        <!--                            </span>-->
+        <!--                </div>-->
+        <!--                <div class="step">-->
+        <!--                    <span class="step-circle {step === 4 || step === 5 ? 'step-circle-selected' : ''}">4</span>-->
+        <!--                    <span class="step-content">-->
+        <!--                                <span class="step-content-title">Step 4<br></span>-->
+        <!--                                <span class="step-content-content">Summary</span>-->
+        <!--                            </span>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+>>>>>>> 9b9f8e7674b8cc26f6810922c6e7e91469387a4c
         <section class="fields">
             {#if step === 1}
-                <Info on:setpage={(data) => step = data.detail.page} />
+                <Info on:setpage={(data) => step = data.detail.page}/>
             {:else if step === 2}
-                <Plan on:setpage={(data) => step = data.detail.page} />
+                <Plan on:setpage={(data) => step = data.detail.page}/>
             {:else if step === 3}
-                <Addons on:setpage={(data) => step = data.detail.page} />
+                <Addons on:setpage={(data) => step = data.detail.page}/>
             {:else if step === 4}
-                <Summary on:setpage={(data) => step = data.detail.page} />
+                <Summary on:setpage={(data) => step = data.detail.page}/>
             {:else if step === 5}
-                <Confirm />
+                <Confirm/>
             {/if}
         </section>
+<<<<<<< HEAD
  </div>
 </div>
+=======
+    </div>
+</div>
+
+>>>>>>> 9b9f8e7674b8cc26f6810922c6e7e91469387a4c
 
 <style>
     .viewing {
@@ -136,6 +181,7 @@
         border: 0.12rem solid hsl(206, 94%, 87%);
         color: black;
     }
+<<<<<<< HEAD
     .step {
     display: flex;
     align-items: center;
@@ -154,6 +200,11 @@
  
     @media(max-width: 765px) {
         /* .image {
+=======
+
+    @media (max-width: 765px) {
+        .image {
+>>>>>>> 9b9f8e7674b8cc26f6810922c6e7e91469387a4c
             background-size: cover;
             width: 100%;
             height: 172px;
