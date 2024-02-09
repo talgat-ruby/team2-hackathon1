@@ -11,39 +11,6 @@
 
 <div class="viewing">
     <div class="container">
-        <div class="image">
-            <div class="steps">
-                <div class="step">
-                    <span class="step-circle {step === 1 ? 'step-circle-selected' : ''}">1</span>
-                    <span class="step-content">
-                        <span class="step-content-title">Step 1<br></span>
-                        <span class="step-content-content">Your Info</span>
-                    </span>
-                </div>
-                <div class="step">
-                    <span class="step-circle {step === 2 ? 'step-circle-selected' : ''}">2</span>
-                    <span class="step-content">
-                        <span class="step-content-title">Step 2<br></span>
-                        <span class="step-content-content">Select Plan</span>
-                    </span>
-                </div>
-                <div class="step">
-                    <span class="step-circle {step === 3 ? 'step-circle-selected' : ''}">3</span>
-                    <span class="step-content">
-                        <span class="step-content-title">Step 3<br></span>
-                        <span class="step-content-content">Add-Ons</span>
-                    </span>
-                </div>
-                <div class="step">
-                    <span class="step-circle {step === 4 || step === 5 ? 'step-circle-selected' : ''}">4</span>
-                    <span class="step-content">
-                        <span class="step-content-title">Step 4<br></span>
-                        <span class="step-content-content">Summary</span>
-                    </span>
-                </div>
-            </div>
-       
-    </div>
         <Sidebar {step}/>
         <!--        <div class="image">-->
         <!--            <div class="steps">-->
