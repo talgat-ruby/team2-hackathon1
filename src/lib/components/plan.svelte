@@ -59,22 +59,56 @@
       </figure >
     </form>
 
-  <div class="switcher" on:click={toggle}>
-    <p class="{switcher.monthly ? 'monthly sw-active' : 'monthly'}">Monthly</p>
+
+  <div class="switcher">
+    <p class={switcher.monthly ? 'active' : 'not_active'}>Monthly</p>
     <label class="switch">
-      <input type="checkbox" checked="{switcher.monthly}" />
+      <input type="checkbox" on:click={toggle}>
       <span class="slider round"></span>
     </label>
-    <p class="{switcher.monthly ? 'yearly' : 'yearly sw-active'}">Yearly</p>
+    <p class={!switcher.monthly ? 'active' : 'not_active'}>Yearly</p>
   </div>
-    <div class="btns">
+
+
+  <div class="btns">
         <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
       	<button class="next-stp" type="button" on:click={goToNextStep}>Next Step</button>
     </div>
   </section>
- 
+
 
   <style>
+    .active {
+      color: rgb(2, 41, 89);
+
+      font-family: Ubuntu, sans-serif;
+
+      font-size: 14px;
+
+      font-weight: 500;
+
+      line-height: 16px;
+
+      letter-spacing: 0px;
+
+      text-align: right;
+    }
+
+    .not_active {
+      color: rgb(150, 153, 170);
+
+      font-family: Ubuntu,sans-serif;
+
+      font-size: 14px;
+
+      font-weight: 500;
+
+      line-height: 16px;
+
+      letter-spacing: 0px;
+
+      text-align: left;
+    }
     .step-2 {
     width: 100%;
     }
