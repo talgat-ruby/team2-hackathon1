@@ -6,6 +6,20 @@
     import Confirm from '$lib/components/confirm.svelte'
     import Sidebar from "$lib/components/sidebar/Sidebar.svelte";
 
+    let formData = {
+        name: 'John',
+        email: '',
+        phone: '',
+        plan: '',
+        monthly: false,
+        service: false,
+        storage: false,
+        profile: false,
+    };
+    const handleSubmit = () => {
+        console.log("Your form data => ", formData)
+    }
+
     let step = 1;
 </script>
 
@@ -45,11 +59,18 @@
         <!--            </div>-->
         <!--        </div>-->
 
-        <section class="fields">
+        <form class="fields" on:submit={handleSubmit}>
             {#if step === 1}
-                <Info on:setpage={(data) => step = data.detail.page}/>
+                <Info on:setpage={(data) => step = data.detail.page}
+                      bind:name={formData.name}
+                      bind:email={formData.email}
+                      bind:phone={formData.phone}
+                />
             {:else if step === 2}
-                <Plan on:setpage={(data) => step = data.detail.page}/>
+                <Plan on:setpage={(data) => step = data.detail.page}
+                      bind:plan={formData.plan}
+                      bind:monthly={formData.monthly}
+                />
             {:else if step === 3}
                 <Addons on:setpage={(data) => step = data.detail.page}/>
             {:else if step === 4}
@@ -57,8 +78,8 @@
             {:else if step === 5}
                 <Confirm/>
             {/if}
-        </section>
- </div>
+        </form>
+    </div>
 
 </div>
 
@@ -74,7 +95,7 @@
         border-radius: 1rem;
         background-color: hsl(0, 0%, 100%);
         display: flex;
-        
+
         margin-left: auto;
         margin-right: auto;
         box-shadow: 0 15px 10px -15px hsl(229, 24%, 87%);
@@ -113,13 +134,13 @@
         height: 1rem;
         border-radius: 50%;
         border: 1px solid var(--sidebar-primary-color);
-        color:var(--sidebar-primary-color);;
+        color: var(--sidebar-primary-color);;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-   
+
     .step-content-title {
         font-weight: 400;
         font-size: 0.9rem;

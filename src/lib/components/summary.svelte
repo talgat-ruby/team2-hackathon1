@@ -36,7 +36,7 @@
     </div>
     <div class="btns">
       <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
-      <button class="next-stp" type="button" on:click={goToNextStep}>Next Step</button>
+      <button class="next-stp" type="submit" on:click={goToNextStep}>Next Step</button>
     </div>
   </div>
   <style>
