@@ -80,12 +80,6 @@
         box-shadow: 0 15px 10px -15px hsl(229, 24%, 87%);
     }
 
-    .image {
-        width: 274px;
-        height: 568px;
-        background-image: url("/images/bg-sidebar-desktop.svg");
-    }
-
     .fields {
         margin-top: 3rem;
         margin-left: 1rem;
@@ -94,68 +88,12 @@
         display: flex;
     }
 
-    .steps {
-        display: grid;
-        margin-left: 2rem;
-    }
 
-    .step {
-        display: flex;
-        margin-top: 2rem;
-        align-items: center;
-    }
 
-    .step-circle {
-        font-weight: 700;
-        margin-right: 1rem;
-        padding: 0.5rem;
-        width: 1rem;
-        height: 1rem;
-        border-radius: 50%;
-        border: 1px solid var(--sidebar-primary-color);
-        color:var(--sidebar-primary-color);;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+ 
 
-   
-    .step-content-title {
-        font-weight: 400;
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        color: var(--sidebar-primary-color);
-        opacity: 50%;
-        letter-spacing: 0.001rem;
-    }
-
-    .step-content-content {
-        font-weight: 700;
-        text-transform: uppercase;
-        color: var(--sidebar-primary-color);
-    }
-
-    .step-circle-selected {
-        background-color: hsl(206, 94%, 87%);
-        border: 0.12rem solid hsl(206, 94%, 87%);
-        color: black;
-    }
-
-    @media (max-width: 765px) {
-        .image {
-            background-size: cover;
-            width: 100%;
-            height: 172px;
-            background-image: url("/images/bg-sidebar-mobile.svg");
-            position: absolute;
-            z-index: -1;
-        }
-
-        .steps {
-            display: flex;
-            justify-content: center;
-            margin-left: unset;
-        }
+    @media (max-width: 768px) {
+       
 
         .fields {
             margin: 6.7rem 1rem 0 1rem;
@@ -178,10 +116,6 @@
             margin: unset;
         }
 
-        .step-content {
-            position: absolute;
-            visibility: hidden;
-        }
     }
 
 </style>
