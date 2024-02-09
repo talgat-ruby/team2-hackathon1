@@ -9,6 +9,10 @@
 	function goToNextStep() {
 	  dispatch('setpage', { page: 5});
 	}
+  
+  let switcher: string;
+
+  
   </script>
 
 <div class="stp step-4">

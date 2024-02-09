@@ -4,14 +4,11 @@
  import Arcade from "../assets/images/icon-arcade.svg"
  import Pro from "../assets/images/icon-pro.svg"
  import Advanced from "../assets/images/icon-advanced.svg"
-  $: selectedCardData = $selectedCard;
-  $: {
-    selectedCardName = selectedCardData.name;
-    selectedCardImageUrl = selectedCardData.imageUrl;
-  }
+ 
+  $:{selectedCardName = $selectedCard.name;}
+  
 
   let selectedCardName: string;
-  let selectedCardImageUrl: string;
 
   let active: boolean;
   const dispatch = createEventDispatcher();
@@ -24,28 +21,34 @@
     dispatch('setpage', { page: 1 });
   }
 
-  let switcher = { monthly: true };
-
+ let switcher: { monthly: boolean } = { monthly: true };
   function toggle() {
-    switcher.monthly = !switcher.monthly; // Toggle between true and false
+    switcher.monthly = !switcher.monthly; 
+    updateSwitcher(switcher.monthly ? 'monthly' : 'yearly');// Toggle between true and false
   }
-
+  
   const cards = [
     { name: 'Arcade', monthlyPrice: 9, yearlyPrice: 90, imageUrl: Arcade},
     { name: 'Advanced', monthlyPrice: 12, yearlyPrice: 120, imageUrl: Advanced },
     { name: 'Pro', monthlyPrice: 15, yearlyPrice: 150, imageUrl: Pro}
   ];
-
-  function selectCard(card: string, monthlyPrice: number, yearlyPrice: number, imageUrl: string) {
-    selectedCard.set({
-      name: card,
-      monthlyPrice,
-      yearlyPrice,
-      switcher: switcher.monthly ? 'monthly' : 'yearly',
-      imageUrl,
-    });
-    active = true;
-  }
+function updateSwitcher(newswitcher:string){
+  selectedCard.update((prev) => ({
+    ...prev,
+    switcher: newswitcher,
+  
+  }));
+}
+  function selectCard(card: string, monthlyPrice: number, yearlyPrice: number,imageUrl: string) {
+  selectedCard.update((prev) => ({
+    ...prev,
+    name: card,
+    monthlyPrice: monthlyPrice,
+    yearlyPrice: yearlyPrice,
+    imageUrl,
+  }));
+  active = true;
+}
 </script>
 
 <section class="stp step-2">
@@ -57,8 +60,7 @@
     <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
     {#each cards as { name, monthlyPrice, yearlyPrice, imageUrl }}
       <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-      <figure class="plan-card {selectedCardName=== name ? 'active' : ''}" on:click={() => selectCard(name, monthlyPrice, yearlyPrice, imageUrl)}>
+      <figure class="plan-card {selectedCardName=== name ? 'active-card' : ''}" on:click={() => selectCard(name, monthlyPrice, yearlyPrice, imageUrl)}>
         <img src={imageUrl} alt={`Image for ${name}`} />
         <figurecaption class="plan-info chosen">
           <b>{name}</b>
@@ -73,21 +75,56 @@
     {/each}
   </form>
 
-  <div class="switcher" on:click={toggle}>
-    <p class="{switcher.monthly ? 'monthly sw-active' : 'monthly'}">Monthly</p>
+
+  <div class="switcher">
+    <p class={switcher.monthly ? 'active' : 'not_active'}>Monthly</p>
     <label class="switch">
-      <input type="checkbox" bind:checked={switcher.monthly} />
+      <input type="checkbox" on:click={toggle}>
       <span class="slider round"></span>
     </label>
-    <p class="{switcher.monthly ? 'yearly' : 'yearly sw-active'}">Yearly</p>
+    <p class={!switcher.monthly ? 'active' : 'not_active'}>Yearly</p>
   </div>
+
+
   <div class="btns">
-    <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
-    <button class="next-stp" type="button" on:click={goToNextStep}>Next Step</button>
-  </div>
-</section>
+        <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
+      	<button class="next-stp" type="button" on:click={goToNextStep}>Next Step</button>
+    </div>
+  </section>
+
 
   <style>
+    .active {
+      color: rgb(2, 41, 89);
+
+      font-family: Ubuntu, sans-serif;
+
+      font-size: 14px;
+
+      font-weight: 500;
+
+      line-height: 16px;
+
+      letter-spacing: 0px;
+
+      text-align: right;
+    }
+
+    .not_active {
+      color: rgb(150, 153, 170);
+
+      font-family: Ubuntu,sans-serif;
+
+      font-size: 14px;
+
+      font-weight: 500;
+
+      line-height: 16px;
+
+      letter-spacing: 0px;
+
+      text-align: left;
+    }
     .step-2 {
     width: 100%;
     }
@@ -111,7 +148,7 @@
   gap: 2.5rem;
   justify-content: space-between;
 }
-.active {
+.active-card {
         background-color: var(--sidebar-accent-color);
         border-color: var(--sidebar-accent-color);
         color: var(--primary-color);
@@ -131,14 +168,6 @@
 
 .plan-info span {
   color: var(--secondary-color);
-}
-.monthly,
-.yearly {
-  color: var(--secondary-color);
-  font-weight: 500;
-}
-.sw-active {
-  color: var(--primary-color);
 }
 .switcher {
     margin: 2rem 0;
