@@ -11,6 +11,7 @@
   let selectedCardName: string;
 
   let active: boolean;
+  
   const dispatch = createEventDispatcher();
 
   function goToNextStep() {
@@ -21,7 +22,8 @@
     dispatch('setpage', { page: 1 });
   }
 
- let switcher: { monthly: boolean } = { monthly: true };
+  export let switcher:{ monthly: boolean } = { monthly: true };
+
   function toggle() {
     switcher.monthly = !switcher.monthly; 
     updateSwitcher(switcher.monthly ? 'monthly' : 'yearly');// Toggle between true and false
@@ -69,6 +71,7 @@ function updateSwitcher(newswitcher:string){
           {/if}
           {#if !switcher.monthly}
             <span class="plan-priced">${yearlyPrice}/yr</span>
+            <p class="plan-priced">2 months free</p>
           {/if}
         </figurecaption>
       </figure>
@@ -140,7 +143,7 @@ function updateSwitcher(newswitcher:string){
   padding-top:1.25rem;
   padding-left: 1rem;
   padding-bottom: 1.25rem;
-  padding-right: 4rem;
+  padding-right: 2rem;
   cursor: pointer;
   display: flex;
   flex-direction: column;

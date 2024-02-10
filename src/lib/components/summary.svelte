@@ -1,18 +1,23 @@
   <script lang="ts">
-   import { selectedCard } from './SelectedCard';
 
-	import { createEventDispatcher } from 'svelte';
-	const dispatch = createEventDispatcher();
+  import { selectedCard, selectedAddons } from './SelectedCard';
+  import { createEventDispatcher, onMount } from 'svelte';
+  import type { Addon } from './SelectedCard';
+  
+  let selectedAddonsList: Addon[];
+
+  $: selectedAddonsList = $selectedAddons;
+
+  const dispatch = createEventDispatcher();
+
   function goToBackStep() {
-	  dispatch('setpage', { page: 3 });
-	}
-	function goToNextStep() {
-	  dispatch('setpage', { page: 5});
-	}
-  
-  let switcher: string;
+    dispatch('setpage', { page: 3 });
+  }
 
-  
+  function goToNextStep() {
+    dispatch('setpage', { page: 5 });
+  }
+
   </script>
 
 <div class="stp step-4">
@@ -37,14 +42,16 @@
         {/if}
   
         </div>
-        <hr />
+     <hr/>
         <div class="addons">
-          <template>
-            <div class="selected-addon">
-              <span class="service-name">Online serivice</span>
-              <span class="servic-price">+$1/mo</span>
-            </div>
-          </template>
+          {#each selectedAddonsList as { name, monthlyAddPrice, selected }}
+          {#if selected}
+          <div class="selected-addon">
+              <p class="adds-name">{name}</p>
+              <p class="adds-price"> {`+$${monthlyAddPrice}/mo`}</p>
+          </div>
+          {/if}
+        {/each}
         </div>
       </div>
       <p class="total">Total (per month) <b>+$12/mo</b></p>
@@ -54,10 +61,14 @@
       <button class="next-stp" type="button" on:click={goToNextStep}>Next Step</button>
     </div>
   </div>
+  
+  
   <style>
+  
   .step-4 {
   width: 100%;
-}
+  }
+
 .selection-box {
   display: flex;
   flex-direction: column;
@@ -68,10 +79,10 @@
   background-color: var(--selected-card-color);
   padding: 1.5rem;
 }
-/* .selected {
+.selected {
   border: 2px solid var(--accent-color);
   background-color: var(--selected-card-color);
-} */
+}
 .selected-plan {
   display: flex;
   justify-content: space-between;
@@ -87,7 +98,7 @@
   font-weight: 500;
   font-size: 0.9rem;
 }
-.selected-addon .servic-price {
+.selected-addon .adds-price{
   color: var(--primary-color);
 }
 .total {
