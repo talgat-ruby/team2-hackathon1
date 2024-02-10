@@ -10,7 +10,6 @@
 
 <style>
     aside {
-        grid-row: 1 / 4;
         padding-top: 2rem;
         min-height: 10.75rem;
         background-image: url("$lib/images/bg-sidebar-mobile.svg");

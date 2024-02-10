@@ -14,19 +14,19 @@
 
     // Our handlers
     function onSubmit(values) {
-        if (step === steps.length - 1) {
+        if (step === steps.length) {
             // On our final step with POST our data somewhere
             console.log('Submitted data: ', stepsState)
         } else {
             // If we're not on the last step, store our data and increase a step
             stepsState[i] = values;
             stepsState = stepsState; // Triggering update
-            step += 1;
+            step++;
         }
     }
 
     function onBack(values) {
-        if (step <= 0) return;
+        if (step <= 1) return;
         stepsState[i] = values;
         stepsState = stepsState; // Triggering update
         step -= 1;
@@ -34,8 +34,9 @@
 </script>
 
 <!-- We display the current step here -->
-<div class="container">
+<div>
     <Sidebar {step}/>
+
     <svelte:component
             initialValues={stepsState[i]}
             {onBack}
@@ -48,14 +49,17 @@
 <!--<slot/>-->
 
 <style>
-    .container {
+    div {
         margin-top: 3rem;
         padding: 1rem;
         border-radius: 1rem;
         display: grid;
         grid-template-columns: auto 1fr;
-        grid-template-rows: 1fr auto;
         background-color: var(--form-bg-color);
         box-shadow: 0 15px 10px -15px hsl(229, 24%, 87%);
+
+        @media (min-width: 48rem) {
+            min-height: 37.5rem;
+        }
     }
 </style>
