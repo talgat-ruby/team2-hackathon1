@@ -58,7 +58,7 @@
                 <Confirm/>
             {/if}
         </section>
- </div>
+    </div>
 
 </div>
 
@@ -74,7 +74,7 @@
         border-radius: 1rem;
         background-color: hsl(0, 0%, 100%);
         display: flex;
-        
+
         margin-left: auto;
         margin-right: auto;
         box-shadow: 0 15px 10px -15px hsl(229, 24%, 87%);
@@ -89,11 +89,8 @@
     }
 
 
-
- 
-
     @media (max-width: 768px) {
-       
+
 
         .fields {
             margin: 6.7rem 1rem 0 1rem;

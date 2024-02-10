@@ -37,6 +37,7 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource/ubuntu": "^5.0.8",
+		"felte": "^1.2.14",
 		"more-modern-css-reset": "^1.0.0",
 		"reset-css": "^5.0.2"
 	}
