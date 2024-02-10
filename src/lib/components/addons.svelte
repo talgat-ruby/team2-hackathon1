@@ -1,13 +1,31 @@
-<script>
-	import { createEventDispatcher } from 'svelte';
-  
-	const dispatch = createEventDispatcher();
-  
-	function goToNextStep() {
-	  dispatch('setpage', { page: 4 });
-	}function goToBackStep() {
-	  dispatch('setpage', { page: 2 });
-	}
+<script lang="ts">
+ import { createEventDispatcher } from 'svelte';
+ import { selectedAddons } from './SelectedCard';
+ import switcher from "./plan.svelte"
+ 
+
+  const dispatch = createEventDispatcher();
+
+    function updateSelectedAddons(addonId: number, selected: boolean) {
+    selectedAddons.update((prevAddons) => {
+      const addonIndex = prevAddons.findIndex((addon) => addon.id === addonId);
+      if (addonIndex !== -1) {
+        const updatedAddon = { ...prevAddons[addonIndex], selected };
+        prevAddons.splice(addonIndex, 1, updatedAddon);
+      }
+      console.log('Updating addon with ID:', addonId, 'Selected:', selected);
+      return prevAddons;
+    });
+  }
+
+
+  function goToNextStep() {
+    dispatch('setpage', { page: 4 });
+  }
+
+  function goToBackStep() {
+    dispatch('setpage', { page: 2 });
+  }
   </script>
   
   <div class="stp step-3">
@@ -16,34 +34,22 @@
       <p class="exp">Add-ons help enhance your gaming experience.</p>
     </div>
     <form>
-      <div class="box" data-id="1">
-        <input type="checkbox" id="online" />
+      {#each $selectedAddons as { id, name, description, monthlyAddPrice,yearlyAddPrice, selected }}
+      <div class="box" data-id={id}>
+        <input type="checkbox" bind:checked={selected} on:change={() => updateSelectedAddons(id, selected)} />
         <div class="description">
-          <label for="online">Online service</label>
-          <small>Access to multiplayer games</small>
+          <label for={id.toString()}>{name}</label>
+          <small>{description}</small>
         </div>
-        <p class="price">+$1/mo</p>
+       
+        <p class="price">{`+$${monthlyAddPrice}/mo`}</p>
       </div>
-      <div class="box" data-id="2">
-        <input type="checkbox" id="larger" />
-        <div class="description">
-          <label for="larger">Larger storage</label>
-          <small>Extra 1TB of cloud save</small>
-        </div>
-        <p class="price">+$2/mo</p>
-      </div>
-      <div class="box" data-id="3">
-        <input type="checkbox" id="profile" />
-        <div class="description">
-          <label for="profile">Customizable Profile</label>
-          <small>Custom theme on your profile</small>
-        </div>
-        <p class="price">+$2/mo</p>
-      </div>
+    {/each}
     </form>
     <div class="btns">
       <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
       <button class="next-stp" type="button" on:click={goToNextStep}>Next Step</button>
+     
     </div>
   </div>
 
