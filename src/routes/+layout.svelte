@@ -1,8 +1,7 @@
 <script>
-    import Sidebar from "$lib/components/sidebar/Sidebar.svelte";
-    import Footer from "$lib/components/Footer.svelte";
     import Step1 from "$lib/components/Step1.svelte";
     import Step2 from "$lib/components/Step2.svelte";
+    import Sidebar from "$lib/components/sidebar/Sidebar.svelte";
 
     const steps = [Step1, Step2];
 
@@ -35,12 +34,28 @@
 </script>
 
 <!-- We display the current step here -->
-<Sidebar {step}/>
-<svelte:component
-        initialValues={stepsState[i]}
-        {onBack}
-        {onSubmit}
-        {step}
-        this={steps[i]}
-/>
-<Footer {step}/>
+<div class="container">
+    <Sidebar {step}/>
+    <svelte:component
+            initialValues={stepsState[i]}
+            {onBack}
+            {onSubmit}
+            {step}
+            this={steps[i]}
+    />
+</div>
+
+<!--<slot/>-->
+
+<style>
+    .container {
+        margin-top: 3rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: 1fr auto;
+        background-color: var(--form-bg-color);
+        box-shadow: 0 15px 10px -15px hsl(229, 24%, 87%);
+    }
+</style>

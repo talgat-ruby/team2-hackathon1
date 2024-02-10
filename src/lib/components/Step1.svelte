@@ -1,6 +1,7 @@
 <script>
     import {createForm} from 'felte'
     import StepHeader from "$lib/components/StepHeader.svelte";
+    import Footer from "$lib/components/Footer.svelte";
 
     export let step;
     export let initialValues;
@@ -11,12 +12,6 @@
 
 <StepHeader {step}/>
 <form use:form>
-    <label for=firstName>First name</label>
-    <input id=firstName name=firstName>
-    <label for=lastName>Last name</label>
-    <input id=lastName name=lastName><br>
-    <button type=submit>Next page</button>
-
     <div class="label">
         <label for="name">Name</label>
         <p class="error">This Field Is Required</p>
@@ -48,4 +43,6 @@
             required
             type="tel"
     />
+
+    <Footer {step}/>
 </form>

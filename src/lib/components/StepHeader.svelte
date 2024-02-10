@@ -26,3 +26,7 @@
     <h1>{steps[i].title}</h1>
     <p>{steps[i].info}</p>
 </header>
+
+<style>
+
+</style>
