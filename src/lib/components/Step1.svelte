@@ -1,12 +1,15 @@
 <script>
     import {createForm} from 'felte'
+    import StepHeader from "$lib/components/StepHeader.svelte";
 
+    export let step;
     export let initialValues;
     export let onSubmit;
 
     const {form} = createForm({onSubmit, initialValues})
 </script>
 
+<StepHeader {step}/>
 <form use:form>
     <label for=firstName>First name</label>
     <input id=firstName name=firstName>
