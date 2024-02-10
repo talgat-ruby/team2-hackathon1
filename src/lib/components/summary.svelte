@@ -1,4 +1,6 @@
-<script>
+  <script lang="ts">
+   import { selectedCard } from './SelectedCard';
+
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
   function goToBackStep() {
@@ -7,6 +9,10 @@
 	function goToNextStep() {
 	  dispatch('setpage', { page: 5});
 	}
+  
+  let switcher: string;
+
+  
   </script>
 
 <div class="stp step-4">
@@ -19,8 +25,17 @@
     <div class="selection-box">
       <div class="selection-container">
         <div class="selected-plan">
-          <p class="plan-name">Arcade(Monthly)</p>
-          <p class="plan-price">$9/mo</p>
+          {#if $selectedCard.name}
+          <p class="plan-name">{$selectedCard.name} ({$selectedCard.switcher === 'monthly' ? 'Monthly' : 'Yearly'})</p>
+          {#if $selectedCard.switcher === 'monthly'}
+            <p class="plan-price">${$selectedCard.monthlyPrice}/mo</p>
+          {:else}
+            <p class="plan-price">${$selectedCard.yearlyPrice}/yr</p>
+          {/if}
+        {:else}
+          <p>No card selected yet.</p>
+        {/if}
+  
         </div>
         <hr />
         <div class="addons">
@@ -53,10 +68,10 @@
   background-color: var(--selected-card-color);
   padding: 1.5rem;
 }
-.selected {
+/* .selected {
   border: 2px solid var(--accent-color);
   background-color: var(--selected-card-color);
-}
+} */
 .selected-plan {
   display: flex;
   justify-content: space-between;
