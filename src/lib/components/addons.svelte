@@ -1,9 +1,12 @@
 <script lang="ts">
  import { createEventDispatcher } from 'svelte';
  import { selectedAddons,selectedCard } from './SelectedCard';
-
+ import type {Addon }from "./SelectedCard"
  
+ let selectedAddon: Addon[];
+ $:{selectedAddon = $selectedAddons}
 
+  let hasError = false;
   const dispatch = createEventDispatcher();
 
     function updateSelectedAddons(addonId: number, selected: boolean) {
@@ -13,15 +16,21 @@
         const updatedAddon = { ...prevAddons[addonIndex], selected };
         prevAddons.splice(addonIndex, 1, updatedAddon);
       }
-      console.log('Updating addon with ID:', addonId, 'Selected:', selected);
       return prevAddons;
     });
   }
-
-
   function goToNextStep() {
+  if (selectedAddon.some(addon => addon.selected)) {
+    hasError = false;
     dispatch('setpage', { page: 4 });
+  } else {
+    hasError = true;
   }
+}
+  function handleNextButtonClick() {
+    goToNextStep();
+  }
+
 
   function goToBackStep() {
     dispatch('setpage', { page: 2 });
@@ -34,7 +43,7 @@
       <p class="exp">Add-ons help enhance your gaming experience.</p>
     </div>
     <form>
-      {#each $selectedAddons as { id, name, description, monthlyAddPrice,yearlyAddPrice, selected }}
+      {#each selectedAddon as { id, name, description, monthlyAddPrice,yearlyAddPrice, selected }}
       <div class="box" data-id={id}>
         <input type="checkbox" bind:checked={selected} on:change={() => updateSelectedAddons(id, selected)} />
         <div class="description">
@@ -49,10 +58,13 @@
         
       </div>
     {/each}
+    {#if hasError}
+      <p class="error">Please select at least 1 option</p>
+    {/if}
     </form>
     <div class="btns">
       <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
-      <button class="next-stp" type="button" on:click={goToNextStep}>Next Step</button>
+      <button class="next-stp" type="button" on:click={handleNextButtonClick}>Next Step</button>
      
     </div>
   </div>
@@ -105,4 +117,9 @@
 .price {
   color: var(--accent-color);
 }
+form .error {
+	color: var(--error-color);
+	font-size: 0.9rem;
+	font-weight: 700;
+  }
   </style>

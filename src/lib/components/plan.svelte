@@ -7,6 +7,7 @@
 
   $:{selectedCardName = $selectedCard.name;}
 
+  let hasError = false;
 
   let selectedCardName: string;
 
@@ -15,14 +16,21 @@
   const dispatch = createEventDispatcher();
 
   function goToNextStep() {
-    dispatch('setpage', { page: 3 });
+    if (selectedCardName) {
+      hasError = false;
+      dispatch('setpage', { page: 3 });
+    } else {
+      hasError = true;
+    }
   }
-
+  function handleNextButtonClick() {
+    goToNextStep();
+  }
   function goToBackStep() {
     dispatch('setpage', { page: 1 });
   }
 
-  let switcher:{ monthly: boolean } = { monthly: true };
+ let switcher:{ monthly: boolean } = { monthly: true };
 
   function toggle() {
     switcher.monthly = !switcher.monthly; 
@@ -76,6 +84,9 @@ function updateSwitcher(newswitcher:string){
         </figurecaption>
       </figure>
     {/each}
+    {#if hasError}
+      <p class="error">Please choose a plan.</p>
+    {/if}
   </form>
 
 
@@ -91,7 +102,7 @@ function updateSwitcher(newswitcher:string){
 
   <div class="btns">
         <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
-      	<button class="next-stp" type="button" on:click={goToNextStep}>Next Step</button>
+      	<button class="next-stp" type="button" on:click={handleNextButtonClick}>Next Step</button>
     </div>
   </section>
 
@@ -172,6 +183,11 @@ function updateSwitcher(newswitcher:string){
 .plan-info span {
   color: var(--secondary-color);
 }
+form .error {
+	color: var(--error-color);
+	font-size: 0.9rem;
+	font-weight: 700;
+  }
 .switcher {
     margin: 2rem 0;
   }
