@@ -1,8 +1,8 @@
 <script>
     import {createForm} from 'felte'
-    import StepHeader from "$lib/components/StepHeader.svelte";
     import Footer from "$lib/components/Footer.svelte";
     import InputField from "$lib/components/InputField.svelte";
+    import FormHeader from "$lib/components/FormHeader.svelte";
 
     export let step;
     export let initialValues;
@@ -12,7 +12,7 @@
 </script>
 
 <form use:form>
-    <StepHeader {step}/>
+    <FormHeader {step}/>
     <section>
         <InputField id="name" label="Name" name="name" placeholder="e.g. Stephen King"/>
         <InputField id="email" label="Email Address" name="email" placeholder="e.g. stephenking@lorem.com"
