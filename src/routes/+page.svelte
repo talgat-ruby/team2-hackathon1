@@ -7,6 +7,13 @@
     import Sidebar from "$lib/components/sidebar/Sidebar.svelte";
 
     let step = 1;
+
+    let formData = {
+        name: '',
+        surname: '',
+        email: '',
+    }
+
 </script>
 
 <div class="viewing">
@@ -14,7 +21,7 @@
         <Sidebar {step}/>
         <section class="fields">
             {#if step === 1}
-                <Info on:setpage={(data) => step = data.detail.page}/>
+                <Info bind:formData on:setpage={(data) => step = data.detail.page} />
             {:else if step === 2}
                 <Plan on:setpage={(data) => step = data.detail.page}/>
             {:else if step === 3}

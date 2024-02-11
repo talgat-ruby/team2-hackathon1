@@ -1,16 +1,14 @@
-<script lang="ts">
-	import {createEventDispatcher} from 'svelte';
-
-	const dispatch = createEventDispatcher();
-
+<script>
+    import { createEventDispatcher } from 'svelte';
+    const dispatch = createEventDispatcher();
     function goToNextStep() {
-        dispatch('setpage', {page: 2});
+        dispatch('setpage', { page: 2 });
     }
 
-    export let name: string, email: string, phone: string;
+    export let formData;
 </script>
 
-<section class="stp step-1">
+<section  class="stp step-1">
     <div class="header">
         <h1 class="title">Personal info</h1>
         <p class="exp">
@@ -23,37 +21,37 @@
             <p class="error">This Field Is Required</p>
         </div>
         <input
-                bind:value={name}
-                id="name"
-                placeholder="e.g. Stephen King"
+                bind:value={formData.name}
                 required
                 type="text"
+                id="name"
+                placeholder="e.g. Stephen King"
         />
         <div class="label">
             <label for="email">Email Address</label>
             <p class="error">This Field Is Required</p>
         </div>
         <input
-                bind:value={email}
-                id="email"
-                placeholder="e.g. stephenking@lorem.com"
+                bind:value={formData.email}
                 required
                 type="text"
+                id="email"
+                placeholder="e.g. stephenking@lorem.com"
         />
         <div class="label">
             <label for="phone">Phone Number</label>
             <p class="error">This Field Is Required</p>
         </div>
         <input
-                bind:value={phone}
-                id="phone"
-                placeholder="e.g. +1 234 567 890"
+                bind:value={formData.phone}
                 required
                 type="tel"
+                id="phone"
+                placeholder="e.g. +1 234 567 890"
         />
     </form>
     <div class="btns">
-        <button class="next-stp" on:click={goToNextStep} type="button">Next Step</button>
+        <button class="next-stp" type="button" on:click={goToNextStep}>Next Step</button>
 
     </div>
 </section>
@@ -62,7 +60,6 @@
         display: flex;
         width: 100%;
     }
-
     .step-1 form {
         display: flex;
         flex-direction: column;
@@ -70,14 +67,12 @@
         justify-content: center;
         gap: 1rem;
     }
-
     .label {
         color: var(--primary-color);
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
-
     .step-1 form input {
         padding: 1rem;
         border: 1px solid var(--secondary-color);
@@ -85,17 +80,14 @@
         font-weight: 500;
         font-size: 1rem;
     }
-
     .step-1 form input:focus {
         outline-color: var(--accent-color);
     }
-
     form input::placeholder {
         font-weight: 500;
         font-size: 1rem;
         font-family: inherit;
     }
-
     form .error {
         display: none;
         color: var(--error-color);
