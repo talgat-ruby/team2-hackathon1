@@ -1,7 +1,7 @@
 <script lang="ts">
  import { createEventDispatcher } from 'svelte';
- import { selectedAddons } from './SelectedCard';
- import switcher from "./plan.svelte"
+ import { selectedAddons,selectedCard } from './SelectedCard';
+
  
 
   const dispatch = createEventDispatcher();
@@ -41,8 +41,12 @@
           <label for={id.toString()}>{name}</label>
           <small>{description}</small>
         </div>
-       
+        {#if $selectedCard.switcher === 'monthly' }
         <p class="price">{`+$${monthlyAddPrice}/mo`}</p>
+        {:else}
+        <p class="price">{`+$${yearlyAddPrice}/yr`}</p> 
+        {/if}
+        
       </div>
     {/each}
     </form>

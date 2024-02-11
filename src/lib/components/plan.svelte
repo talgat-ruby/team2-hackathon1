@@ -4,9 +4,9 @@
  import Arcade from "../assets/images/icon-arcade.svg"
  import Pro from "../assets/images/icon-pro.svg"
  import Advanced from "../assets/images/icon-advanced.svg"
- 
+
   $:{selectedCardName = $selectedCard.name;}
-  
+
 
   let selectedCardName: string;
 
@@ -22,7 +22,7 @@
     dispatch('setpage', { page: 1 });
   }
 
-  export let switcher:{ monthly: boolean } = { monthly: true };
+  let switcher:{ monthly: boolean } = { monthly: true };
 
   function toggle() {
     switcher.monthly = !switcher.monthly; 

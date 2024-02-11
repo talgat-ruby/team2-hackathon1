@@ -12,39 +12,6 @@
 <div class="viewing">
     <div class="container">
         <Sidebar {step}/>
-        <!--        <div class="image">-->
-        <!--            <div class="steps">-->
-        <!--                <div class="step">-->
-        <!--                    <span class="step-circle {step === 1 ? 'step-circle-selected' : ''}">1</span>-->
-        <!--                    <span class="step-content">-->
-        <!--                                <span class="step-content-title">Step 1<br></span>-->
-        <!--                                <span class="step-content-content">Your Info</span>-->
-        <!--                            </span>-->
-        <!--                </div>-->
-        <!--                <div class="step">-->
-        <!--                    <span class="step-circle {step === 2 ? 'step-circle-selected' : ''}">2</span>-->
-        <!--                    <span class="step-content">-->
-        <!--                                <span class="step-content-title">Step 2<br></span>-->
-        <!--                                <span class="step-content-content">Select Plan</span>-->
-        <!--                            </span>-->
-        <!--                </div>-->
-        <!--                <div class="step">-->
-        <!--                    <span class="step-circle {step === 3 ? 'step-circle-selected' : ''}">3</span>-->
-        <!--                    <span class="step-content">-->
-        <!--                                <span class="step-content-title">Step 3<br></span>-->
-        <!--                                <span class="step-content-content">Add-Ons</span>-->
-        <!--                            </span>-->
-        <!--                </div>-->
-        <!--                <div class="step">-->
-        <!--                    <span class="step-circle {step === 4 || step === 5 ? 'step-circle-selected' : ''}">4</span>-->
-        <!--                    <span class="step-content">-->
-        <!--                                <span class="step-content-title">Step 4<br></span>-->
-        <!--                                <span class="step-content-content">Summary</span>-->
-        <!--                            </span>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </div>-->
-
         <section class="fields">
             {#if step === 1}
                 <Info on:setpage={(data) => step = data.detail.page}/>
@@ -72,12 +39,12 @@
         margin-top: 3rem;
         padding: 1rem;
         border-radius: 1rem;
-        background-color: hsl(0, 0%, 100%);
+        background-color:var(--form-bg-color);
         display: flex;
         
         margin-left: auto;
         margin-right: auto;
-        box-shadow: 0 15px 10px -15px hsl(229, 24%, 87%);
+        box-shadow: 0 15px 10px -15px var(--card-border-color)
     }
 
     .fields {
@@ -88,21 +55,16 @@
         display: flex;
     }
 
-
-
- 
-
     @media (max-width: 768px) {
        
-
         .fields {
             margin: 6.7rem 1rem 0 1rem;
             display: flex;
             align-items: flex-start;
             padding: 1.5rem;
             border-radius: 0.5rem;
-            background-color: hsl(0, 0%, 100%);
-            box-shadow: 0 15px 10px -15px hsl(229, 24%, 87%);
+            background-color: var(--form-bg-color);
+            box-shadow: 0 15px 10px -15px var(--card-border-color);
         }
 
         .container {

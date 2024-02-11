@@ -1,9 +1,9 @@
   <script lang="ts">
 
   import { selectedCard, selectedAddons } from './SelectedCard';
-  import { createEventDispatcher, onMount } from 'svelte';
-  import type { Addon } from './SelectedCard';
-  
+  import { createEventDispatcher } from 'svelte';
+  import type { Addon } from './SelectedCard';;
+
   let selectedAddonsList: Addon[];
 
   $: selectedAddonsList = $selectedAddons;
@@ -17,7 +17,21 @@
   function goToNextStep() {
     dispatch('setpage', { page: 5 });
   }
+  function goToChange() {
+    dispatch('setpage', { page: 2 });
+  }
+  function calculateTotal() {
+    let total = 0;
 
+    $selectedAddons.forEach(({ monthlyAddPrice, yearlyAddPrice, selected }) => {
+      if (selected) {
+        total += $selectedCard.switcher === 'monthly' ? monthlyAddPrice : yearlyAddPrice;
+      }
+    });
+    total += $selectedCard.switcher === 'monthly'? $selectedCard.monthlyPrice : $selectedCard.yearlyPrice;
+
+    return total;
+  }
   </script>
 
 <div class="stp step-4">
@@ -29,32 +43,41 @@
     </div>
     <div class="selection-box">
       <div class="selection-container">
+        {#if $selectedCard.name}
+        <p class="plan-name">{$selectedCard.name} ({$selectedCard.switcher === 'monthly' ? 'Monthly' : 'Yearly'})</p>
         <div class="selected-plan">
-          {#if $selectedCard.name}
-          <p class="plan-name">{$selectedCard.name} ({$selectedCard.switcher === 'monthly' ? 'Monthly' : 'Yearly'})</p>
+          <!-- svelte-ignore a11y-click-events-have-key-events -->
+          <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+          <p class="plan-change" on:click={goToChange}>Change</p>
           {#if $selectedCard.switcher === 'monthly'}
             <p class="plan-price">${$selectedCard.monthlyPrice}/mo</p>
           {:else}
             <p class="plan-price">${$selectedCard.yearlyPrice}/yr</p>
-          {/if}
+          {/if} 
+         </div>
         {:else}
           <p>No card selected yet.</p>
         {/if}
-  
-        </div>
+      
+       
      <hr/>
         <div class="addons">
-          {#each selectedAddonsList as { name, monthlyAddPrice, selected }}
+          {#each selectedAddonsList as { name, monthlyAddPrice,yearlyAddPrice, selected }}
           {#if selected}
           <div class="selected-addon">
               <p class="adds-name">{name}</p>
-              <p class="adds-price"> {`+$${monthlyAddPrice}/mo`}</p>
+              {#if $selectedCard.switcher === 'monthly' }
+              <p class="adds-price">{`+$${monthlyAddPrice}/mo`}</p>
+              {:else}
+              <p class="adds-price">{`+$${yearlyAddPrice}/yr`}</p> 
+              {/if}
           </div>
           {/if}
         {/each}
         </div>
       </div>
-      <p class="total">Total (per month) <b>+$12/mo</b></p>
+      <p class="total">Total (per month) <b>+${calculateTotal()}{#if $selectedCard.switcher === 'monthly'}/mo
+      {:else}/yr{/if}</b></p>
     </div>
     <div class="btns">
       <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
@@ -86,17 +109,30 @@
 .selected-plan {
   display: flex;
   justify-content: space-between;
-  padding: 1rem 0;
+  padding:  0 0 0.75rem 0;
   color: var(--primary-color);
   font-weight: 700;
 }
-.selected-addon {
+.selected-addon,.plan-change {
   display: flex;
   justify-content: space-between;
-  padding: 1rem 0;
+  padding: 0 0 0.75rem 0;
   color: var(--secondary-color);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 0.9rem;
+}
+.plan-change{
+  padding: 0;
+  text-decoration: underline;
+}
+.plan-change:active{
+  color: var(--accent-color);
+}
+.plan-name{
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1rem;
 }
 .selected-addon .adds-price{
   color: var(--primary-color);
@@ -110,6 +146,8 @@
 }
 .total b {
   color: var(--accent-color);
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.25rem;
 }
   </style>
