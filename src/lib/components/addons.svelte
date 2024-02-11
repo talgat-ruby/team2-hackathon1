@@ -44,7 +44,7 @@
     </div>
     <form>
       {#each selectedAddon as { id, name, description, monthlyAddPrice,yearlyAddPrice, selected }}
-      <div class="box" data-id={id}>
+      <div class="box  {selected ? 'active-card' : ''}"  data-id={id} >
         <input type="checkbox" bind:checked={selected} on:change={() => updateSelectedAddons(id, selected)} />
         <div class="description">
           <label for={id.toString()}>{name}</label>
@@ -58,10 +58,10 @@
         
       </div>
     {/each}
-    {#if hasError}
-      <p class="error">Please select at least 1 option</p>
-    {/if}
     </form>
+    {#if hasError}
+    <p class="error">Please select at least 1 option</p>
+  {/if}
     <div class="btns">
       <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
       <button class="next-stp" type="button" on:click={handleNextButtonClick}>Next Step</button>
@@ -90,11 +90,21 @@
   align-items: center;
   cursor: pointer;
 }
+.box:hover{
+  background-color: var(--selected-card-color);
+  border-color: hsla(243,100%,63%,1);
+}
+.active-card {
+  
+  background: hsla(230,100%,99%,1);
+  border-color: hsla(243,100%,63%,1);
+    }
 .description {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
   margin-left: 12px;
+  margin-right: 5rem;
 }
 .price {
   margin-left: auto;
@@ -107,19 +117,20 @@
 }
 .description label {
   color: var(--primary-color);
-  font-weight: 700;
+  font-weight: 500;
   user-select: none;
 }
 .description small {
   color: var(--secondary-color);
-  font-weight: 700;
+  font-weight: 400;
 }
 .price {
   color: var(--accent-color);
 }
-form .error {
+.error {
 	color: var(--error-color);
 	font-size: 0.9rem;
-	font-weight: 700;
+	font-weight: 500;
+  margin-top: 1rem;
   }
   </style>

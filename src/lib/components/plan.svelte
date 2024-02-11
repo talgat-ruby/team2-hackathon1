@@ -79,16 +79,15 @@ function updateSwitcher(newswitcher:string){
           {/if}
           {#if !switcher.monthly}
             <span class="plan-priced">${yearlyPrice}/yr</span>
-            <p class="plan-priced">2 months free</p>
+            <p class="price-free">2 months free</p>
           {/if}
         </figurecaption>
       </figure>
     {/each}
-    {#if hasError}
-      <p class="error">Please choose a plan.</p>
-    {/if}
   </form>
-
+  {#if hasError}
+  <p class="error">Please choose a plan.</p>
+  {/if}
 
   <div class="switcher">
     <p class={switcher.monthly ? 'active' : 'not_active'}>Monthly</p>
@@ -149,23 +148,26 @@ function updateSwitcher(newswitcher:string){
   gap: 2rem;
 }
 .plan-card {
-  border: 2px solid var(--card-border-color);
+  border: 1px solid var(--card-border-color);
   border-radius: 7px;
   padding-top:1.25rem;
   padding-left: 1rem;
   padding-bottom: 1.25rem;
-  padding-right: 2rem;
+  padding-right: 2.8rem;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 2.5rem;
+  gap: 2.4rem;
   justify-content: space-between;
 }
+.plan-card:hover{
+  background-color: var(--selected-card-color);
+  border-color: hsla(243,100%,63%,1);
+}
 .active-card {
-        background-color: var(--sidebar-accent-color);
-        border-color: var(--sidebar-accent-color);
-        color: var(--primary-color);
+  background-color: hsla(230,100%,99%,1);
+  border-color: hsla(243,100%,63%,1);
     }
 .plan-info {
   display: flex;
@@ -183,10 +185,11 @@ function updateSwitcher(newswitcher:string){
 .plan-info span {
   color: var(--secondary-color);
 }
-form .error {
+.error {
 	color: var(--error-color);
 	font-size: 0.9rem;
 	font-weight: 700;
+  margin-top: 1rem;
   }
 .switcher {
     margin: 2rem 0;
@@ -212,9 +215,14 @@ form .error {
     width: 0;
     height: 0;
   }
+  .price-free{
+    color: rgb(2, 41, 89);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+  }
   
-  
-@media screen and (max-width: 765px) {
+@media screen and (max-width: 767px) {
 .plan-card {
       width: 100%;
       height: 100px;
@@ -222,8 +230,8 @@ form .error {
       justify-content: flex-start;
       gap: 1rem;
       padding-top:1rem;
-  padding-left: 1rem;
-  padding-bottom: 1.25rem;
+      padding-left: 1rem;
+      padding-bottom: 1.25rem;
       align-items: center;
     }
     .step-2 form {

@@ -48,27 +48,23 @@
         border-radius: 1rem;
         background-color:var(--form-bg-color);
         display: flex;
-        
-        margin-left: auto;
-        margin-right: auto;
         box-shadow: 0 15px 10px -15px var(--card-border-color)
     }
 
     .fields {
-        margin-top: 3rem;
-        margin-left: 1rem;
+        margin-top: 2.5rem;
         padding-right: 6.25rem;
         padding-left: 6.25rem;
         display: flex;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
        
         .fields {
-            margin: 6.7rem 1rem 0 1rem;
+            margin: -4.5rem 1rem 0 1rem;
             display: flex;
             align-items: flex-start;
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: 0.5rem;
             background-color: var(--form-bg-color);
             box-shadow: 0 15px 10px -15px var(--card-border-color);

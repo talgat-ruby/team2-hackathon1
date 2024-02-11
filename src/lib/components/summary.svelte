@@ -102,16 +102,19 @@
   background-color: var(--selected-card-color);
   padding: 1.5rem;
 }
-.selected {
-  border: 2px solid var(--accent-color);
-  background-color: var(--selected-card-color);
-}
 .selected-plan {
   display: flex;
   justify-content: space-between;
   padding:  0 0 0.75rem 0;
   color: var(--primary-color);
+  font-weight: 400;
+}
+.selected-plan .plan-price{
+  color: rgb(2, 41, 89);
+  font-family: Ubuntu;
+  font-size: 16px;
   font-weight: 700;
+  line-height: 20px;
 }
 .selected-addon,.plan-change {
   display: flex;
@@ -125,7 +128,7 @@
   padding: 0;
   text-decoration: underline;
 }
-.plan-change:active{
+.plan-change:active,.plan-change:hover{
   color: var(--accent-color);
 }
 .plan-name{
