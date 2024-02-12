@@ -57,8 +57,8 @@
         padding-right: 6.25rem;
         padding-left: 6.25rem;
         display: flex;
-        min-width: 55vw;
-        min-height: 80vh;
+        min-width: 50vw;
+        min-height: 60vh;
     }
 
     @media (max-width: 767px) {
