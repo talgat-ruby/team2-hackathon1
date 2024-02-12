@@ -14,6 +14,12 @@
     const { form, errors, constraints, enhance } = superForm(data.form, {
         dataType: 'json'
     });
+
+    $: {
+        if ($errors.name || $errors.phone || $errors.phone ) {
+            step = 1;
+        }
+    }
 </script>
 
 <div class="viewing">
