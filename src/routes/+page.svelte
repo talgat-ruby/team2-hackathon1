@@ -12,7 +12,15 @@
     export let data;
 
     // Client API:
-    const { form, errors, constraints } = superForm(data.form);
+    const { form, errors, constraints, enhance } = superForm(data.form, {
+        dataType: 'json'
+    });
+
+    $: {
+        if ($errors.name || $errors.phone || $errors.phone ) {
+            step = 1;
+        }
+    }
 </script>
 
 <div class="viewing">
@@ -20,13 +28,13 @@
         <Sidebar {step}/>
         <section class="fields">
             {#if step === 1}
-                <Info bind:form={$form} bind:errors={$errors} bind:constraints={$constraints} on:setpage={(data) => step = data.detail.page} />
+                <Info bind:form={$form} errors={$errors} constraints={$constraints} on:setpage={(data) => step = data.detail.page} />
             {:else if step === 2}
                 <Plan bind:form={$form} on:setpage={(data) => step = data.detail.page}/>
             {:else if step === 3}
-                <Addons on:setpage={(data) => step = data.detail.page}/>
+                <Addons bind:form={$form} on:setpage={(data) => step = data.detail.page}/>
             {:else if step === 4}
-                <Summary bind:form={$form} on:setpage={(data) => step = data.detail.page}/>
+                <Summary {enhance} on:setpage={(data) => step = data.detail.page}/>
             {:else if step === 5}
                 <Confirm/>
             {/if}

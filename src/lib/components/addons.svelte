@@ -35,7 +35,15 @@
   function goToBackStep() {
     dispatch('setpage', { page: 2 });
   }
-  </script>
+
+  export let form;
+
+  $: {
+    form.addOns.onlineService = $selectedAddons[0].selected;
+    form.addOns.largerStorage = $selectedAddons[1].selected;
+    form.addOns.customizableProfile = $selectedAddons[2].selected;
+  }
+</script>
   
   <div class="stp step-3">
     <div class="header">
