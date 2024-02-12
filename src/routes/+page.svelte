@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import Info from '$lib/components/info.svelte'
     import Plan from '$lib/components/plan.svelte'
     import Addons from '$lib/components/addons.svelte'
@@ -8,38 +8,23 @@
 
     let step = 1;
 
-    let formData = {
-        name: '',
-        surname: '',
-        email: '',
-    }
-
     import { superForm } from 'sveltekit-superforms';
+    import SuperDebug from 'sveltekit-superforms';
 
     export let data;
 
     // Client API:
-    const { form } = superForm(data.form);
+    const { form, errors, constraints } = superForm(data.form);
 </script>
-
-<form method="POST">
-    <label for="name">Name</label>
-    <input type="text" name="name" bind:value={$form.name} />
-
-    <label for="email">E-mail</label>
-    <input type="email" name="email" bind:value={$form.email} />
-
-    <div><button>Submit</button></div>
-</form>
 
 <div class="viewing">
     <div class="container">
         <Sidebar {step}/>
         <section class="fields">
             {#if step === 1}
-                <Info bind:formData on:setpage={(data) => step = data.detail.page} />
+                <Info bind:form={$form} bind:errors={$errors} bind:constraints={$constraints} on:setpage={(data) => step = data.detail.page} />
             {:else if step === 2}
-                <Plan on:setpage={(data) => step = data.detail.page}/>
+                <Plan bind:form={$form} on:setpage={(data) => step = data.detail.page}/>
             {:else if step === 3}
                 <Addons on:setpage={(data) => step = data.detail.page}/>
             {:else if step === 4}
@@ -49,8 +34,9 @@
             {/if}
         </section>
  </div>
-
 </div>
+
+<SuperDebug data={$form} />
 
 <style>
     .viewing {
