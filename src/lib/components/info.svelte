@@ -110,5 +110,11 @@
         font-weight: 700;
     }
 
-
+    .invalid {
+        color: var(--error-color);
+        font-size: 0.875rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
 </style>

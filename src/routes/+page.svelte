@@ -28,7 +28,7 @@
             {:else if step === 3}
                 <Addons on:setpage={(data) => step = data.detail.page}/>
             {:else if step === 4}
-                <Summary on:setpage={(data) => step = data.detail.page}/>
+                <Summary bind:form={$form} on:setpage={(data) => step = data.detail.page}/>
             {:else if step === 5}
                 <Confirm/>
             {/if}
