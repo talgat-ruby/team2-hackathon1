@@ -1,5 +1,5 @@
 <script lang="ts">
-    import SidebarMenuItem from "$lib/components/sidebar/SidebarMenuItem.svelte";
+    import SidebarMenuItem from "$lib/components/sidebar/SidebarListItem.svelte";
 
     export let step: number;
     const steps = [
@@ -10,14 +10,14 @@
     ];
 </script>
 
-<menu>
+<ul>
     {#each steps as s (s.num)}
         <SidebarMenuItem step={s} active={s.num === step}/>
     {/each}
-</menu>
+</ul>
 
 <style>
-    menu {
+    ul {
         display: grid;
         grid-auto-flow: column;
         place-content: center;
