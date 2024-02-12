@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import Info from '$lib/components/info.svelte'
     import Plan from '$lib/components/plan.svelte'
     import Addons from '$lib/components/addons.svelte'
@@ -8,12 +8,13 @@
 
     let step = 1;
 
-    let formData = {
-        name: '',
-        surname: '',
-        email: '',
-    }
+    import { superForm } from 'sveltekit-superforms';
+    import SuperDebug from 'sveltekit-superforms';
 
+    export let data;
+
+    // Client API:
+    const { form, errors, constraints } = superForm(data.form);
 </script>
 
 <div class="viewing">
@@ -21,20 +22,21 @@
         <Sidebar {step}/>
         <section class="fields">
             {#if step === 1}
-                <Info bind:formData on:setpage={(data) => step = data.detail.page} />
+                <Info bind:form={$form} bind:errors={$errors} bind:constraints={$constraints} on:setpage={(data) => step = data.detail.page} />
             {:else if step === 2}
-                <Plan on:setpage={(data) => step = data.detail.page}/>
+                <Plan bind:form={$form} on:setpage={(data) => step = data.detail.page}/>
             {:else if step === 3}
                 <Addons on:setpage={(data) => step = data.detail.page}/>
             {:else if step === 4}
-                <Summary on:setpage={(data) => step = data.detail.page}/>
+                <Summary bind:form={$form} on:setpage={(data) => step = data.detail.page}/>
             {:else if step === 5}
                 <Confirm/>
             {/if}
         </section>
  </div>
-
 </div>
+
+<SuperDebug data={$form} />
 
 <style>
     .viewing {
