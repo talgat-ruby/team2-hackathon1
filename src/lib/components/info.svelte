@@ -1,11 +1,14 @@
 <script>
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
+
+    export let form;
+    export let errors;
+    export let constraints;
+
     function goToNextStep() {
         dispatch('setpage', { page: 2 });
     }
-
-    export let formData;
 </script>
 
 <section  class="stp step-1">
@@ -20,8 +23,12 @@
             <label for="name">Name</label>
             <p class="error">This Field Is Required</p>
         </div>
+        {#if errors.name}<span class="invalid">{errors.name}</span>{/if}
         <input
-                bind:value={formData.name}
+                name="name"
+                aria-invalid={errors.name ? 'true' : undefined}
+                bind:value={form.name}
+                {...constraints.name}
                 required
                 type="text"
                 id="name"
@@ -30,9 +37,13 @@
         <div class="label">
             <label for="email">Email Address</label>
             <p class="error">This Field Is Required</p>
+            {#if errors.email}<span class="invalid">{errors.email}</span>{/if}
         </div>
         <input
-                bind:value={formData.email}
+                name="email"
+                aria-invalid={errors.email ? 'true' : undefined}
+                bind:value={form.email}
+                {...constraints.email}
                 required
                 type="text"
                 id="email"
@@ -41,9 +52,13 @@
         <div class="label">
             <label for="phone">Phone Number</label>
             <p class="error">This Field Is Required</p>
+            {#if errors.phone}<span class="invalid">{errors.phone}</span>{/if}
         </div>
         <input
-                bind:value={formData.phone}
+                name="phone"
+                aria-invalid={errors.phone ? 'true' : undefined}
+                bind:value={form.phone}
+                {...constraints.phone}
                 required
                 type="tel"
                 id="phone"
@@ -95,5 +110,11 @@
         font-weight: 700;
     }
 
-
+    .invalid {
+        color: var(--error-color);
+        font-size: 0.875rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
 </style>

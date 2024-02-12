@@ -59,6 +59,10 @@ function updateSwitcher(newswitcher:string){
   }));
   active = true;
 }
+
+  export let form;
+  $: form.plan= $selectedCard.name.toLowerCase();
+  $: form.period = switcher.monthly ? 'monthly' : 'yearly';
 </script>
 
 <section class="stp step-2">

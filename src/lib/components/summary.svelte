@@ -32,9 +32,11 @@
 
     return total;
   }
+
+  export let form;
   </script>
 
-<div class="stp step-4">
+<form class="stp step-4" method="POST">
     <div class="header">
       <h1 class="title">Finishing up</h1>
       <p class="exp">
@@ -84,9 +86,9 @@
     </div>
     <div class="btns">
       <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
-      <button class="next-stp" type="submit" on:click={goToNextStep}>Confirm</button>
+      <button class="next-stp" type="submit" >Next Step</button>
     </div>
-  </div>
+  </form>
   
   
   <style>
@@ -158,4 +160,5 @@
   font-weight: 700;
   line-height: 1.25rem;
 }
+
   </style>
