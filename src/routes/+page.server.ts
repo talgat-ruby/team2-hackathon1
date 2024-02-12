@@ -4,16 +4,17 @@ import { z } from 'zod';
 
 // Define outside the load function so the adapter can be cached
 const schema = z.object({
-    name: z.string().default('Hello world!'),
+    name: z.string(),
+    // name: z.string().default('Hello world!'),
     email: z.string().email(),
     phone: z.string(),
     plan: z.string(),
     period: z.string(),
-    // addOns: z.object({
-    //     onlineService: z.boolean().optional(),
-    //     largerStorage: z.boolean().optional(),
-    //     customizableProfile: z.boolean().optional(),
-    // })
+    addOns: z.object({
+        onlineService: z.boolean().optional(),
+        largerStorage: z.boolean().optional(),
+        customizableProfile: z.boolean().optional(),
+    })
 });
 
 export const load = (async () => {

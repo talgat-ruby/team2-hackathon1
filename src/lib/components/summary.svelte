@@ -33,10 +33,11 @@
     return total;
   }
 
-  export let form;
+  export let enhance;
+
   </script>
 
-<form class="stp step-4" method="POST">
+<form class="stp step-4" method="POST" use:enhance>
     <div class="header">
       <h1 class="title">Finishing up</h1>
       <p class="exp">
