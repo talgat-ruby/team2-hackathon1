@@ -30,6 +30,8 @@ body {
     background-color: var(--progress-primary-color);
     border-radius: 1rem;
     box-shadow: 0px 0px 1px black;
+    margin: auto;
+    padding: auto;
   }
   .circle {
     width: 40px;

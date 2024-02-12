@@ -138,14 +138,15 @@ function updateSwitcher(newswitcher:string){
 
       text-align: left;
     }
-    .step-2 {
+    /* .step-2 {
     width: 100%;
-    }
+    } */
 .step-2 form {
   display: flex;
   flex: 1;
   align-items: center;
   gap: 2rem;
+ 
 }
 .plan-card {
   border: 1px solid var(--card-border-color);

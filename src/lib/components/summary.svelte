@@ -88,9 +88,9 @@
   
   <style>
   
-  .step-4 {
+  /* .step-4 {
   width: 100%;
-  }
+  } */
 
 .selection-box {
   display: flex;

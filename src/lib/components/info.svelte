@@ -58,7 +58,7 @@
 <style>
     .step-1 {
         display: flex;
-        width: 100%;
+        /* width: 100%; */
     }
     .step-1 form {
         display: flex;

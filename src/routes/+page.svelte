@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
     import Info from '$lib/components/info.svelte'
     import Plan from '$lib/components/plan.svelte'
     import Addons from '$lib/components/addons.svelte'
@@ -41,7 +43,6 @@
         display: grid;
         align-items: center;
     }
-
     .container {
         margin-top: 3rem;
         padding: 1rem;
@@ -56,20 +57,24 @@
         padding-right: 6.25rem;
         padding-left: 6.25rem;
         display: flex;
+        min-width: 55vw;
+        min-height: 80vh;
     }
 
     @media (max-width: 767px) {
        
         .fields {
-            margin: -4.5rem 1rem 0 1rem;
+            min-width:80vw ;
+            min-height: 50vh;
+            margin: 7rem 1rem 0 1rem;
             display: flex;
-            align-items: flex-start;
             padding: 1rem;
             border-radius: 0.5rem;
             background-color: var(--form-bg-color);
             box-shadow: 0 15px 10px -15px var(--card-border-color);
         }
-
+       
+        
         .container {
             flex-wrap: wrap;
             padding: unset;
