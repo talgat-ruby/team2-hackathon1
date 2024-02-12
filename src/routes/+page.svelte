@@ -5,12 +5,9 @@
     import Summary from '$lib/components/summary.svelte'
     import Confirm from '$lib/components/confirm.svelte'
     import Sidebar from "$lib/components/sidebar/Sidebar.svelte";
-
-    let step = 1;
-
     import { superForm } from 'sveltekit-superforms';
     import SuperDebug from 'sveltekit-superforms';
-
+    let step = 1;
     export let data;
 
     // Client API:
@@ -43,7 +40,6 @@
         display: grid;
         align-items: center;
     }
-
     .container {
         margin-top: 3rem;
         padding: 1rem;
@@ -58,20 +54,24 @@
         padding-right: 6.25rem;
         padding-left: 6.25rem;
         display: flex;
+        min-width: 50vw;
+        min-height: 60vh;
     }
 
     @media (max-width: 767px) {
        
         .fields {
-            margin: -4.5rem 1rem 0 1rem;
+            min-width:80vw ;
+            min-height: 50vh;
+            margin: 7rem 1rem 0 1rem;
             display: flex;
-            align-items: flex-start;
             padding: 1rem;
             border-radius: 0.5rem;
             background-color: var(--form-bg-color);
             box-shadow: 0 15px 10px -15px var(--card-border-color);
         }
-
+       
+        
         .container {
             flex-wrap: wrap;
             padding: unset;
