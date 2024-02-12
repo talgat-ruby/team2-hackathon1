@@ -1,4 +1,4 @@
-import { superValidate } from 'sveltekit-superforms';
+import {setError, superValidate} from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { z } from 'zod';
 
@@ -7,12 +7,15 @@ const schema = z.object({
     name: z
       .string({ required_error: 'Name is required' })
       .min(1, { message: 'Name is required' })
-      .trim(),
+      .trim()
+        .default('Stephen'),
     // name: z.string().default('Hello world!'),
     email: z
       .string({ required_error: 'Email is required' })
-      .email({ message: 'Email must be a valid email address' }),
-    phone: z.string({required_error: 'Phone is required'}),
+      // .email({ message: 'Email must be a valid email address' })
+        .default('stephenking@lorem.com'),
+    phone: z.string({required_error: 'Phone is required'})
+        .default('+1234567890'),
     plan: z.string(),
     period: z.string(),
     addOns: z.object({
@@ -58,6 +61,11 @@ export const actions = {
                 console.log("FORM: ",form)
                 console.log("BODY: ",body);
                 // Handle server errors or invalid responses
+                Object.keys(body.error).forEach(key => {
+                    console.log(key, body.error[key]);
+                    setError(form, key, body.error[key]);
+                });
+
                 return fail(response.status, { error: body.error, form });
             }
 
