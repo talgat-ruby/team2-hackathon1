@@ -18,7 +18,7 @@
             Please provide your name, email address, and phone number.
         </p>
     </div>
-    <form>
+    <form method="POST">
         <div class="label">
             <label for="name">Name</label>
             <p class="error">This Field Is Required</p>
