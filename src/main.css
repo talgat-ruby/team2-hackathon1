@@ -30,6 +30,8 @@ body {
     background-color: var(--progress-primary-color);
     border-radius: 1rem;
     box-shadow: 0px 0px 1px black;
+    margin: auto;
+    padding: auto;
   }
   .circle {
     width: 40px;
@@ -49,20 +51,41 @@ body {
   .err {
     border: 2px solid var(--error-color) !important;
   }
- 
+  .btns{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5.6rem;
+  }
   .next-stp {
     margin-top: auto;
     margin-bottom: 2rem;
     margin-left: auto;
     border: none;
-    padding: 1rem 2rem;
-    border-radius: 7px;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
     background-color: var(--primary-color);
     color: var(--sidebar-primary-color);
     cursor: pointer;
   }
-  
- 
+  .next-stp:focus{
+    background-color: hsla(213,72%,31%,1)
+  }
+  .prev-stp{
+    margin-top:0;
+    margin-bottom: 2rem;
+    margin-left:0;
+    border: none;
+    color: hsla(231,10%,63%,1);
+    background: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.13rem;
+  }
+  .prev-stp:focus{
+    color: var(--primary-color);
+  }
   .slider {
     position: absolute;
     cursor: pointer;

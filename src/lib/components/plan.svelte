@@ -113,43 +113,29 @@ function updateSwitcher(newswitcher:string){
   <style>
     .active {
       color: rgb(2, 41, 89);
-
       font-family: Ubuntu, sans-serif;
-
       font-size: 14px;
-
       font-weight: 500;
-
       line-height: 16px;
-
-      letter-spacing: 0px;
-
-      text-align: right;
     }
 
     .not_active {
       color: rgb(150, 153, 170);
-
       font-family: Ubuntu,sans-serif;
-
       font-size: 14px;
-
       font-weight: 500;
-
       line-height: 16px;
-
-      letter-spacing: 0px;
-
-      text-align: left;
+     
     }
-    .step-2 {
+    /* .step-2 {
     width: 100%;
-    }
+    } */
 .step-2 form {
   display: flex;
   flex: 1;
   align-items: center;
   gap: 2rem;
+ 
 }
 .plan-card {
   border: 1px solid var(--card-border-color);

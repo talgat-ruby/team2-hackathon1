@@ -15,7 +15,7 @@
 <style>
   .step-5 {
   align-items: center;
-  width: 100%;
+  /* width: 100%; */
   text-align: center;
   justify-content: center;
   margin: auto;

@@ -80,9 +80,9 @@
   
   <style>
 
-.step-3 {
+/* .step-3 {
   width: 100%;
-}
+} */
 .step-3 form {
   display: flex;
   flex-direction: column;

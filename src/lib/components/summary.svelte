@@ -79,8 +79,11 @@
         {/each}
         </div>
       </div>
-      <p class="total">Total (per month) <b>+${calculateTotal()}{#if $selectedCard.switcher === 'monthly'}/mo
-      {:else}/yr{/if}</b></p>
+      <p class="total">
+        Total (per {#if $selectedCard.switcher === 'monthly'}month{:else}year{/if})
+        <b>+${calculateTotal()}{#if $selectedCard.switcher === 'monthly'}/mo{:else}/yr{/if}</b>
+      </p>
+      
     </div>
     <div class="btns">
       <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
@@ -90,11 +93,13 @@
   
   
   <style>
-  
-  .step-4 {
-  width: 100%;
-  }
 
+.next-stp{
+  background-color: hsla(243,100%,63%,1);
+}
+.next-stp:focus{
+  background-color: hsla(243,100%,77%,1);
+}
 .selection-box {
   display: flex;
   flex-direction: column;
