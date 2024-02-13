@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
   import { selectedCard } from './SelectedCard';
  import Arcade from "../assets/images/icon-arcade.svg"
  import Pro from "../assets/images/icon-pro.svg"

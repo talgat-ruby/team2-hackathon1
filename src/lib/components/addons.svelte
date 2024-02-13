@@ -1,13 +1,10 @@
 <script lang="ts">
- import { createEventDispatcher } from 'svelte';
  import { selectedAddons,selectedCard } from './SelectedCard';
  import type {Addon }from "./SelectedCard"
  
  let selectedAddon: Addon[];
  $:{selectedAddon = $selectedAddons}
 
-
-  const dispatch = createEventDispatcher();
 
     function updateSelectedAddons(addonId: number, selected: boolean) {
     selectedAddons.update((prevAddons) => {
@@ -20,10 +17,6 @@
     });
   }
 
-
-  function goToBackStep() {
-    dispatch('setpage', { page: 2 });
-  }
 
   export let form;
 

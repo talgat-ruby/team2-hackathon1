@@ -10,13 +10,6 @@
 
   const dispatch = createEventDispatcher();
 
-  function goToBackStep() {
-    dispatch('setpage', { page: 3 });
-  }
-
-  function goToNextStep() {
-    dispatch('setpage', { page: 5 });
-  }
 
   export let errors;
   $: if (!errors.name && !errors.email && !errors.phone && !errors.message) {
@@ -38,7 +31,14 @@
 
     return total;
   }
-
+  function goToNextStep() {
+    dispatch('setpage', { page: 5 });
+  }
+  // export let errors;
+  // $: if (!errors.name && !errors.email && !errors.phone && !errors.message) {
+  //   goToNextStep();
+  // }
+  
   export let enhance;
 
   </script>

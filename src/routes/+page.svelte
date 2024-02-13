@@ -29,9 +29,7 @@
         if ($errors.plan ) {
             step = 2;
         }
-        if (!$errors.name && !$errors.email && !$errors.phone &&!$errors.plan &&!$errors.message) {
-            step = 5;
-  }
+       
     }
 
   
@@ -44,11 +42,11 @@
         <div class="desktop-btn">
         <section class="fields">
             {#if step === 1}
-                <Info bind:form={$form} errors={$errors} constraints={$constraints} on:setpage={(data) => step = data.detail.page} />
+                <Info bind:form={$form} errors={$errors} constraints={$constraints}  />
             {:else if step === 2}
-                <Plan bind:form={$form} errors={$errors} on:setpage={(data) => step = data.detail.page}/>
+                <Plan bind:form={$form} errors={$errors} />
             {:else if step === 3}
-                <Addons bind:form={$form} on:setpage={(data) => step = data.detail.page}/>
+                <Addons bind:form={$form} />
             {:else if step === 4}
                 <Summary errors={$errors} {enhance} on:setpage={(data) => step = data.detail.page}/>
             {:else if step === 5}
@@ -56,11 +54,15 @@
             {/if}
         </section>
         <div class="btns">
-            <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
-            {#if step === 4}
-            <button class="next-stp" type="submit" >Next Step</button>
-            {:else}
+            {#if step === 1}
+            <span></span>
             <button class="next-stp" type="button" on:click={goToNextStep}>Next Step</button>
+            {:else if step === 2 || step === 3}
+            <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
+            <button class="next-stp" type="button" on:click={goToNextStep}>Next Step</button>
+            {:else if  step === 4}
+            <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
+            <button class="next-stp" type="submit" >Confirm</button>
             {/if}
         </div>
     </div>
@@ -68,13 +70,15 @@
     </div>
  
 </form>
-<!-- <SuperDebug data={$form} /> -->
+<SuperDebug data={$form} />
 
 <style>
+   
    .desktop-btn{
     display: flex;
     flex-direction: column;
    }
+ 
        .btns {
         margin-top: 2rem;
         display: flex;
