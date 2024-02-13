@@ -17,6 +17,12 @@
   function goToNextStep() {
     dispatch('setpage', { page: 5 });
   }
+
+  export let errors;
+  $: if (!errors.name && !errors.email && !errors.phone && !errors.message) {
+    dispatch('setpage', { page: 5 });
+  }
+
   function goToChange() {
     dispatch('setpage', { page: 2 });
   }
