@@ -16,7 +16,7 @@
     });
 
     $: {
-        if ($errors.name || $errors.phone || $errors.phone ) {
+        if ($errors.name || $errors.phone || $errors.email ) {
             step = 1;
         }
 
