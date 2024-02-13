@@ -85,10 +85,10 @@
       </p>
       
     </div>
-    <div class="btns">
-      <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
-      <button class="next-stp" type="submit" >Next Step</button>
-    </div>
+    <!-- <div class="btns">
+      <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button> -->
+      <!-- <button class="next-stp" type="submit" >Next Step</button>
+    </div> --> 
   </form>
   
   

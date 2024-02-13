@@ -7,7 +7,7 @@ export type Addon = {
   selected: boolean;
   yearlyAddPrice:number;
 };
-
+export const clickEvent = writable("");
 export const selectedAddons = writable<Addon[]>([
   { id: 1, name: 'Online service', description: 'Access to multiplayer games', monthlyAddPrice: 1,yearlyAddPrice:10 ,selected: false },
   { id: 2, name: 'Larger storage', description: 'Extra 1TB of cloud save', monthlyAddPrice: 2,yearlyAddPrice:20, selected: false },

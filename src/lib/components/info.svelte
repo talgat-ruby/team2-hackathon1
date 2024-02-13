@@ -76,10 +76,10 @@
                 placeholder="e.g. +1 234 567 890"
         />
     </form>
-    <div class="btns">
+    <!-- <div class="btns">
         <button class="next-stp" type="button" on:click={goToNextStep}>Next Step</button>
 
-    </div>
+    </div> -->
 </section>
 <style>
     .step-1 {

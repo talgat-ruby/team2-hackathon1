@@ -5,9 +5,14 @@
     import Summary from '$lib/components/summary.svelte'
     import Confirm from '$lib/components/confirm.svelte'
     import Sidebar from "$lib/components/sidebar/Sidebar.svelte";
-
+    import handleNextButtonClick  from '../lib/components/plan.svelte';
+    import handleNextButtonClickAddons from '$lib/components/addons.svelte';
     import { superForm } from 'sveltekit-superforms';
     import SuperDebug from 'sveltekit-superforms';
+
+// function handleNext(){
+//     handleNextButtonClick(selectedCardName, hasError, dispatch);
+// }
     let step = 1;
     export let data;
 
@@ -15,12 +20,19 @@
     const { form, errors, constraints, enhance } = superForm(data.form, {
         dataType: 'json'
     });
-
+   function  goToBackStep(){
+     step--;
+    }
+    function goToNextStep(){
+        step++
+    }
     $: {
         if ($errors.name || $errors.phone || $errors.email ) {
             step = 1;
         }
-
+        if ($errors.plan ) {
+            step = 2;
+        }
         $errors.message?.forEach(message => {
             if (message.includes('phone') || message.includes('email')) {
                 step = 1;
@@ -30,7 +42,7 @@
 
     $: console.log({$errors});
 </script>
-
+<form method="POST" use:enhance>
 <div class="viewing">
     <div class="container">
         <Sidebar {step}/>
@@ -38,7 +50,7 @@
             {#if step === 1}
                 <Info bind:form={$form} errors={$errors} constraints={$constraints} on:setpage={(data) => step = data.detail.page} />
             {:else if step === 2}
-                <Plan bind:form={$form} on:setpage={(data) => step = data.detail.page}/>
+                <Plan bind:form={$form} errors={$errors} on:setpage={(data) => step = data.detail.page}/>
             {:else if step === 3}
                 <Addons bind:form={$form} on:setpage={(data) => step = data.detail.page}/>
             {:else if step === 4}
@@ -47,9 +59,18 @@
                 <Confirm/>
             {/if}
         </section>
- </div>
-</div>
+          <div class="btns">
+            <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
+            {#if step === 4}
+            <button class="next-stp" type="submit" >Next Step</button>
+            {:else}
+            <button class="next-stp" type="button" on:click={goToNextStep}>Next Step</button>
+            {/if}
+        </div>
 
+        </div>
+    </div>
+</form>
 <SuperDebug data={$form} />
 
 <style>
@@ -74,7 +95,9 @@
         min-width: 50vw;
         min-height: 60vh;
     }
-
+    .next-stp4{
+        display: none;
+    }
     @media (max-width: 767px) {
        
         .fields {

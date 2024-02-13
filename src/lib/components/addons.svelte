@@ -27,7 +27,7 @@
     hasError = true;
   }
 }
-  function handleNextButtonClick() {
+  export function handleNextButtonClickAddons() {
     goToNextStep();
   }
 
@@ -70,11 +70,11 @@
     {#if hasError}
     <p class="error">Please select at least 1 option</p>
   {/if}
-    <div class="btns">
+    <!-- <div class="btns">
       <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
       <button class="next-stp" type="button" on:click={handleNextButtonClick}>Next Step</button>
      
-    </div>
+    </div> -->
   </div>
 
   

@@ -4,6 +4,7 @@ import { z } from 'zod';
 
 // Define outside the load function so the adapter can be cached
 const schema = z.object({
+    
     name: z
       .string({ required_error: 'Name is required' })
       .min(1, { message: 'Name is required' })
@@ -16,7 +17,14 @@ const schema = z.object({
         .default('stephenking@lorem.com'),
     phone: z.string({required_error: 'Phone is required'})
         .default('+1234567890'),
-    plan: z.string(),
+    plan: z
+        .string({
+          required_error: 'Please choose a plan',
+       
+        })
+        .refine((value) => ['arcade', 'pro', 'advanced'].includes(value), {
+          message: 'Invalid plan selection',
+        }),
     period: z.string(),
     addOns: z.object({
         onlineService: z.boolean().optional(),
