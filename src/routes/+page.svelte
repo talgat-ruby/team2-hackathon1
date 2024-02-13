@@ -17,10 +17,18 @@
     });
 
     $: {
-        if ($errors.name || $errors.phone || $errors.phone ) {
+        if ($errors.name || $errors.phone || $errors.email ) {
             step = 1;
         }
+
+        $errors.message?.forEach(message => {
+            if (message.includes('phone') || message.includes('email')) {
+                step = 1;
+            }
+        });
     }
+
+    $: console.log({$errors});
 </script>
 
 <div class="viewing">

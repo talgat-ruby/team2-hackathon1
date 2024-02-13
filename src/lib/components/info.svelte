@@ -9,6 +9,17 @@
     function goToNextStep() {
         dispatch('setpage', { page: 2 });
     }
+
+    $: {
+        errors.message?.forEach(message => {
+            if (message.includes('phone')) {
+                errors.phone = message;
+            } else if (message.includes('email')) {
+                errors.email = message;
+            }
+        });
+
+    }
 </script>
 
 <section  class="stp step-1">
