@@ -1,13 +1,10 @@
 <script lang="ts">
- import { createEventDispatcher } from 'svelte';
  import { selectedAddons,selectedCard } from './SelectedCard';
  import type {Addon }from "./SelectedCard"
  
  let selectedAddon: Addon[];
  $:{selectedAddon = $selectedAddons}
 
-  let hasError = false;
-  const dispatch = createEventDispatcher();
 
     function updateSelectedAddons(addonId: number, selected: boolean) {
     selectedAddons.update((prevAddons) => {
@@ -19,22 +16,7 @@
       return prevAddons;
     });
   }
-  function goToNextStep() {
-  if (selectedAddon.some(addon => addon.selected)) {
-    hasError = false;
-    dispatch('setpage', { page: 4 });
-  } else {
-    hasError = true;
-  }
-}
-  function handleNextButtonClick() {
-    goToNextStep();
-  }
 
-
-  function goToBackStep() {
-    dispatch('setpage', { page: 2 });
-  }
 
   export let form;
 
@@ -67,14 +49,7 @@
       </label>
     {/each}
     </form>
-    {#if hasError}
-    <p class="error">Please select at least 1 option</p>
-  {/if}
-    <div class="btns">
-      <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
-      <button class="next-stp" type="button" on:click={handleNextButtonClick}>Next Step</button>
-     
-    </div>
+  
   </div>
 
   
