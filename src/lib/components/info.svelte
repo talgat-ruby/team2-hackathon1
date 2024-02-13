@@ -12,7 +12,7 @@
 
     $: {
         errors.message?.forEach(message => {
-            if (message.includes('phone') || message.includes('email')) {
+            if (message.includes('phone')) {
                 errors.phone = message;
             } else if (message.includes('email')) {
                 errors.email = message;
