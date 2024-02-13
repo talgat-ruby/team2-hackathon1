@@ -5,6 +5,7 @@
     --card-bg-color: hsla(231, 23%, 87%, 1);
     --card-border-color: hsla(229, 24%, 87%, 1);
     --primary-color: hsla(213, 96%, 18%, 1);
+    --primary-hover-color: hsla(213, 72%, 31%, 1);
     --secondary-color: hsla(231, 11%, 63%, 1);
     --accent-color: hsla(243, 100%, 63%, 1);
     --selected-card-color:hsla(230,100%,99%,1);
@@ -68,6 +69,7 @@ body {
     color: var(--sidebar-primary-color);
     cursor: pointer;
   }
+  .next-stp:hover,
   .next-stp:focus{
     background-color: hsla(213,72%,31%,1)
   }
@@ -82,6 +84,7 @@ body {
     font-weight: 500;
     line-height: 1.13rem;
   }
+  .prev-stp:hover,
   .prev-stp:focus{
     color: var(--primary-color);
   }
@@ -96,7 +99,12 @@ body {
     -webkit-transition: 0.4s;
     transition: 0.4s;
   }
-  
+
+  .slider:hover,
+  .slider:focus {
+    background-color: var(--primary-hover-color);
+  }
+
   .slider:before {
     position: absolute;
     content: "";

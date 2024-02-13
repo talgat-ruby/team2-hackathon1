@@ -122,6 +122,10 @@
     .step-1 form input:focus {
         outline-color: var(--accent-color);
     }
+    .step-1 form input:hover {
+       cursor: pointer;
+       border-color: var(--accent-color);
+    }
     form input::placeholder {
         font-weight: 500;
         font-size: 1rem;

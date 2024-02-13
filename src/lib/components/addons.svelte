@@ -34,7 +34,7 @@
     </div>
     <form>
       {#each selectedAddon as { id, name, description, monthlyAddPrice,yearlyAddPrice, selected }}
-      <div class="box  {selected ? 'active-card' : ''}"  data-id={id} >
+      <label class="box  {selected ? 'active-card' : ''}"  data-id={id} >
         <input type="checkbox" bind:checked={selected} on:change={() => updateSelectedAddons(id, selected)} />
         <div class="description">
           <label for={id.toString()}>{name}</label>
@@ -46,7 +46,7 @@
         <p class="price">{`+$${yearlyAddPrice}/yr`}</p> 
         {/if}
         
-      </div>
+      </label>
     {/each}
     </form>
   
@@ -73,6 +73,7 @@
   align-items: center;
   cursor: pointer;
 }
+.box:focus,
 .box:hover{
   background-color: var(--selected-card-color);
   border-color: hsla(243,100%,63%,1);
