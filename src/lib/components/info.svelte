@@ -1,24 +1,37 @@
 <script>
-    import { createEventDispatcher } from 'svelte';
-    const dispatch = createEventDispatcher();
 
     export let form;
     export let errors;
     export let constraints;
 
-    function goToNextStep() {
-        dispatch('setpage', { page: 2 });
-    }
-
+  
+    let nameInput, emailInput, phoneInput;
     $: {
+        if (phoneInput) {
+            if (phoneInput.getAttribute('aria-invalid')) {
+                phoneInput.focus();
+            }
+        }
+        if (emailInput) {
+            if (emailInput.getAttribute('aria-invalid')) {
+                emailInput.focus();
+            }
+        }
+        if (nameInput) {
+            if (nameInput.getAttribute('aria-invalid')) {
+                nameInput.focus();
+            }
+        }
+
         errors.message?.forEach(message => {
-            if (message.includes('phone')) {
-                errors.phone = message;
+            if (message.includes('name')) {
+                errors.name = message;
             } else if (message.includes('email')) {
                 errors.email = message;
+            } else if (message.includes('phone')) {
+                errors.phone = message;
             }
         });
-
     }
 </script>
 
@@ -40,6 +53,7 @@
                 aria-invalid={errors.name ? 'true' : undefined}
                 bind:value={form.name}
                 {...constraints.name}
+                bind:this={nameInput}
                 required
                 type="text"
                 id="name"
@@ -55,6 +69,7 @@
                 aria-invalid={errors.email ? 'true' : undefined}
                 bind:value={form.email}
                 {...constraints.email}
+                bind:this={emailInput}
                 required
                 type="text"
                 id="email"
@@ -70,16 +85,14 @@
                 aria-invalid={errors.phone ? 'true' : undefined}
                 bind:value={form.phone}
                 {...constraints.phone}
+                bind:this={phoneInput}
                 required
                 type="tel"
                 id="phone"
                 placeholder="e.g. +1 234 567 890"
         />
     </form>
-    <!-- <div class="btns">
-        <button class="next-stp" type="button" on:click={goToNextStep}>Next Step</button>
-
-    </div> -->
+   
 </section>
 <style>
     .step-1 {
@@ -128,4 +141,9 @@
         font-weight: 700;
         line-height: normal;
     }
+
+    form input[aria-invalid] {
+        border-color: var(--error-color);
+    }
+
 </style>

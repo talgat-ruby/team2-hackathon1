@@ -17,6 +17,12 @@
   function goToNextStep() {
     dispatch('setpage', { page: 5 });
   }
+
+  export let errors;
+  $: if (!errors.name && !errors.email && !errors.phone && !errors.message) {
+    goToNextStep();
+  }
+
   function goToChange() {
     dispatch('setpage', { page: 2 });
   }
@@ -85,21 +91,10 @@
       </p>
       
     </div>
-    <!-- <div class="btns">
-      <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button> -->
-      <!-- <button class="next-stp" type="submit" >Next Step</button>
-    </div> --> 
   </form>
   
   
   <style>
-
-.next-stp{
-  background-color: hsla(243,100%,63%,1);
-}
-.next-stp:focus{
-  background-color: hsla(243,100%,77%,1);
-}
 .selection-box {
   display: flex;
   flex-direction: column;

@@ -6,7 +6,7 @@
  let selectedAddon: Addon[];
  $:{selectedAddon = $selectedAddons}
 
-  let hasError = false;
+
   const dispatch = createEventDispatcher();
 
     function updateSelectedAddons(addonId: number, selected: boolean) {
@@ -18,17 +18,6 @@
       }
       return prevAddons;
     });
-  }
-  function goToNextStep() {
-  if (selectedAddon.some(addon => addon.selected)) {
-    hasError = false;
-    dispatch('setpage', { page: 4 });
-  } else {
-    hasError = true;
-  }
-}
-  export function handleNextButtonClickAddons() {
-    goToNextStep();
   }
 
 
@@ -67,14 +56,7 @@
       </div>
     {/each}
     </form>
-    {#if hasError}
-    <p class="error">Please select at least 1 option</p>
-  {/if}
-    <!-- <div class="btns">
-      <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
-      <button class="next-stp" type="button" on:click={handleNextButtonClick}>Next Step</button>
-     
-    </div> -->
+  
   </div>
 
   

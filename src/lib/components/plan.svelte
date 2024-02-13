@@ -7,30 +7,9 @@
 
   $:{selectedCardName = $selectedCard.name;}
 
-  let hasError = false;
-
   let selectedCardName: string;
 
   let active: boolean;
-  
-  const dispatch = createEventDispatcher();
-
-  function goToNextStep() {
-    if (selectedCardName) {
-      hasError = false;
-      dispatch('setpage', { page: 3 });
-    } else {
-      hasError = true;
-    }
-  }
-
- 
- export function handleNextButtonClick() {
-    goToNextStep();
-  }
-  function goToBackStep() {
-    dispatch('setpage', { page: 1 });
-  }
 
  let switcher:{ monthly: boolean } = { monthly: true };
 
@@ -103,12 +82,6 @@ function updateSwitcher(newswitcher:string){
     </label>
     <p class={!switcher.monthly ? 'active' : 'not_active'}>Yearly</p>
   </div>
-
-<!-- 
-  <div class="btns">
-        <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
-      	<button class="next-stp" type="button" on:click={handleNextButtonClick}>Next Step</button>
-    </div> -->
   </section>
 
 
