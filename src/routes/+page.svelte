@@ -15,17 +15,9 @@
         dataType: 'json'
     });
 
-    $: {
-        if ($errors.name || $errors.phone || $errors.email ) {
+    $: if ($errors.name || $errors.phone || $errors.email || $errors.message) {
             step = 1;
         }
-
-        $errors.message?.forEach(message => {
-            if (message.includes('phone') || message.includes('email')) {
-                step = 1;
-            }
-        });
-    }
 
     $: console.log({$errors});
 </script>
@@ -41,7 +33,7 @@
             {:else if step === 3}
                 <Addons bind:form={$form} on:setpage={(data) => step = data.detail.page}/>
             {:else if step === 4}
-                <Summary {enhance} on:setpage={(data) => step = data.detail.page}/>
+                <Summary errors={$errors} {enhance} on:setpage={(data) => step = data.detail.page}/>
             {:else if step === 5}
                 <Confirm/>
             {/if}

@@ -17,6 +17,12 @@
   function goToNextStep() {
     dispatch('setpage', { page: 5 });
   }
+
+  export let errors;
+  $: if (!errors.name && !errors.email && !errors.phone && !errors.message) {
+    goToNextStep();
+  }
+
   function goToChange() {
     dispatch('setpage', { page: 2 });
   }
@@ -87,7 +93,7 @@
     </div>
     <div class="btns">
       <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
-      <button class="next-stp" type="submit" >Next Step</button>
+      <button class="next-stp" type="submit">Next Step</button>
     </div>
   </form>
   
