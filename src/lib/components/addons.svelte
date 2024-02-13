@@ -98,6 +98,7 @@
   align-items: center;
   cursor: pointer;
 }
+.box:focus,
 .box:hover{
   background-color: var(--selected-card-color);
   border-color: hsla(243,100%,63%,1);

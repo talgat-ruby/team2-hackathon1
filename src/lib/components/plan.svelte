@@ -151,6 +151,7 @@ function updateSwitcher(newswitcher:string){
   gap: 2.4rem;
   justify-content: space-between;
 }
+.plan-card:focus,
 .plan-card:hover{
   background-color: var(--selected-card-color);
   border-color: hsla(243,100%,63%,1);

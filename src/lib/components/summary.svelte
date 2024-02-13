@@ -93,7 +93,7 @@
     </div>
     <div class="btns">
       <button class="prev-stp" type="button" on:click={goToBackStep}>Go Back</button>
-      <button class="next-stp" type="submit">Next Step</button>
+      <button class="next-stp" type="submit">Confirm</button>
     </div>
   </form>
   
@@ -103,6 +103,7 @@
 .next-stp{
   background-color: hsla(243,100%,63%,1);
 }
+.next-stp:hover,
 .next-stp:focus{
   background-color: hsla(243,100%,77%,1);
 }
