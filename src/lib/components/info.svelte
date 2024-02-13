@@ -1,15 +1,10 @@
 <script>
-    import {createEventDispatcher, onMount} from 'svelte';
-    const dispatch = createEventDispatcher();
 
     export let form;
     export let errors;
     export let constraints;
 
-    function goToNextStep() {
-        dispatch('setpage', { page: 2 });
-    }
-
+  
     let nameInput, emailInput, phoneInput;
     $: {
         if (phoneInput) {
@@ -97,10 +92,7 @@
                 placeholder="e.g. +1 234 567 890"
         />
     </form>
-    <div class="btns">
-        <button class="next-stp" type="button" on:click={goToNextStep}>Next Step</button>
-
-    </div>
+   
 </section>
 <style>
     .step-1 {
