@@ -143,8 +143,10 @@
   padding: 0;
   text-decoration: underline;
 }
-.plan-change:active,.plan-change:hover{
+.plan-change:active,.plan-change:hover,
+.plan-change:focus {
   color: var(--accent-color);
+    cursor: pointer;
 }
 .plan-name{
   color: var(--primary-color);
