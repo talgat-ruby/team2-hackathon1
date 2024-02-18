@@ -70,7 +70,7 @@
     </div>
  
 </form>
-<SuperDebug data={$form} />
+<!--<SuperDebug data={$form} />-->
 
 <style>
    
@@ -95,6 +95,7 @@
         align-items: center;
     }
     .container {
+        max-width: 58.75rem;
         position: relative;
         margin-top: 3rem;
         padding: 1rem;
